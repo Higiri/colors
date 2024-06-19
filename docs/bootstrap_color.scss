@@ -1,0 +1,30 @@
+$theme-colors: (
+    "primary": #005da0,
+    "secondary": #5c717f,
+    "success": #168244,
+    "info": #33afe9,
+    "warning": #fff101,
+    "danger": #d62728,
+    "light": #f8f9fa,
+    "dark": #212529,
+);
+
+$blue: #005da0;
+
+$font-family-sans-serif: -apple-system, "BlinkMacSystemFont", "Helvetica Neue", Helvetica, "Arial", "Hiragino Kaku Gothic ProN", "Source Han Sans JP", "メイリオ", Meiryo,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+
+$font-size-base: 1rem;
+//行間
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+
+//見出し
+$headings-font-weight: 500;
+
+//row-cols-xxの最大値
+$grid-row-columns: 16 !default;
+
+@import "../bootstrap/bootstrap/scss/bootstrap";

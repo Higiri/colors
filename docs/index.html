@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>color palettes</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+        <link href="./bootstrap_color.css" rel="stylesheet" />
+        <style>
+            h1,
+            h2 {
+                font-size: 24px;
+            }
+            h3 {
+                font-size: 20px;
+            }
+            h4 {
+                font-size: 1em;
+                font-weight: normal;
+            }
+            .colors-title {
+                font-size: 1em;
+                font-weight: normal;
+                margin: 4px 0;
+            }
+            .nav-pills .nav-link {
+                padding: 4px 8px;
+                margin: 4px 0;
+            }
+            .cud-view > * > h3 {
+                margin: 4px 0;
+                font-size: 1em;
+                font-weight: normal;
+            }
+            .cud-view > * > div {
+                color: #000;
+                background-color: #fff;
+                font-family: consolas, "Myrica M" monospace;
+            }
+            .cud-view > * > div {
+                padding: 2px;
+            }
+            .cud-view > * > :nth-child(2) {
+                color: #fff;
+            }
+            .cud-view > * > :nth-child(4) {
+                background-color: #000;
+            }
+            .color-view > * > * > div,
+            .color-view > .col {
+                font-family: consolas, "Myrica M" monospace;
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="navSpy" class="navbar sticky-top bg-body-secondary">
+            <div class="container-fluid container">
+                <h1 class="navbar-brand h1 mb-0"><i class="bi bi-palette pe-2"></i>palette</h1>
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link" href="#spy1">CUD</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#spy2">HSV</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="#spy3">Blend</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="#spy4">Instance</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="container">
+            <div data-bs-spy="scroll" data-bs-target="#navSpy" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="py-3" tabindex="0">
+                <section id="spy1">
+                    <h2>カラーユニバーサルデザイン推奨配色セット</h2>
+                    <div class="alert alert-info p-2" role="alert">
+                        <p class="mb-1">　<strong>「カラーユニバーサルデザイン推奨配色セット」</strong>は、アクセントカラー9色、ベースカラー7色、無彩色4色のカラーパレットです。</p>
+                        <p class="mb-0">　C型とP型とD型色覚の人に見分けやすく、またP型D型色覚の人が色の名前を間違えにくい配色です。</p>
+                    </div>
+                    <div class="row gx-0 row-cols-4 row-cols-md-6 row-cols-lg-9 pb-4 text-center cud-view">
+                        <div class="col">
+                            <h3>赤</h3>
+                            <div style="background-color: #ff4b00">#ff4b00</div>
+                            <div style="background-color: #ff4b00">255,75,0</div>
+                            <div style="color: #ff4b00">#ff4b00</div>
+                            <div style="color: #ff4b00">255,75,0</div>
+                        </div>
+                        <div class="col">
+                            <h3>オレンジ</h3>
+                            <div style="background-color: #f6aa00">#f6aa00</div>
+                            <div style="background-color: #f6aa00">246,170,0</div>
+                            <div style="color: #f6aa00">#f6aa00</div>
+                            <div style="color: #f6aa00">246,170,0</div>
+                        </div>
+                        <div class="col">
+                            <h3>黄色</h3>
+                            <div style="background-color: #fff100">#fff100</div>
+                            <div style="background-color: #fff100">255,241,0</div>
+                            <div style="color: #fff100">#fff100</div>
+                            <div style="color: #fff100">255,241,0</div>
+                        </div>
+                        <div class="col">
+                            <h3>緑</h3>
+                            <div style="background-color: #03af7a">#03af7a</div>
+                            <div style="background-color: #03af7a">3,175,122</div>
+                            <div style="color: #03af7a">#03af7a</div>
+                            <div style="color: #03af7a">3,175,122</div>
+                        </div>
+                        <div class="col">
+                            <h3>青</h3>
+                            <div style="background-color: #005aff">#005aff</div>
+                            <div style="background-color: #005aff">0,90,255</div>
+                            <div style="color: #005aff">#005aff</div>
+                            <div style="color: #005aff">0,90,255</div>
+                        </div>
+                        <div class="col">
+                            <h3>空色</h3>
+                            <div style="background-color: #4dc4ff">#4dc4ff</div>
+                            <div style="background-color: #4dc4ff">77,196,255</div>
+                            <div style="color: #4dc4ff">#4dc4ff</div>
+                            <div style="color: #4dc4ff">77,196,255</div>
+                        </div>
+                        <div class="col">
+                            <h3>紫</h3>
+                            <div style="background-color: #990099">#990099</div>
+                            <div style="background-color: #990099">153,0,153</div>
+                            <div style="color: #990099">#990099</div>
+                            <div style="color: #990099">153,0,153</div>
+                        </div>
+                        <div class="col">
+                            <h3>ピンク</h3>
+                            <div style="background-color: #ff8082">#ff8082</div>
+                            <div style="background-color: #ff8082">255,128,130</div>
+                            <div style="color: #ff8082">#ff8082</div>
+                            <div style="color: #ff8082">255,128,130</div>
+                        </div>
+                        <div class="col">
+                            <h3>茶色</h3>
+                            <div style="background-color: #804000">#804000</div>
+                            <div style="background-color: #804000">128,64,0</div>
+                            <div style="color: #804000">#804000</div>
+                            <div style="color: #804000">128,64,0</div>
+                        </div>
+                        <div class="col">
+                            <h3>明るいピンク</h3>
+                            <div style="background-color: #ffcabf">#ffcabf</div>
+                            <div style="background-color: #ffcabf">255,202,191</div>
+                            <div style="color: #ffcabf">#ffcabf</div>
+                            <div style="color: #ffcabf">255,202,191</div>
+                        </div>
+                        <div class="col">
+                            <h3>ベージュ</h3>
+                            <div style="background-color: #ffca80">#ffca80</div>
+                            <div style="background-color: #ffca80">255,202,128</div>
+                            <div style="color: #ffca80">#ffca80</div>
+                            <div style="color: #ffca80">255,202,128</div>
+                        </div>
+                        <div class="col">
+                            <h3>クリーム</h3>
+                            <div style="background-color: #ffff80">#ffff80</div>
+                            <div style="background-color: #ffff80">255,255,128</div>
+                            <div style="color: #ffff80">#ffff80</div>
+                            <div style="color: #ffff80">255,255,128</div>
+                        </div>
+                        <div class="col">
+                            <h3>明るい黄緑</h3>
+                            <div style="background-color: #d8f255">#d8f255</div>
+                            <div style="background-color: #d8f255">216,242,85</div>
+                            <div style="color: #d8f255">#d8f255</div>
+                            <div style="color: #d8f255">216,242,85</div>
+                        </div>
+                        <div class="col">
+                            <h3>明るい緑</h3>
+                            <div style="background-color: #77d9a8">#77d9a8</div>
+                            <div style="background-color: #77d9a8">119,217,168</div>
+                            <div style="color: #77d9a8">#77d9a8</div>
+                            <div style="color: #77d9a8">119,217,168</div>
+                        </div>
+                        <div class="col">
+                            <h3>明るい空色</h3>
+                            <div style="background-color: #bfe4ff">#bfe4ff</div>
+                            <div style="background-color: #bfe4ff">191,228,255</div>
+                            <div style="color: #bfe4ff">#bfe4ff</div>
+                            <div style="color: #bfe4ff">191,228,255</div>
+                        </div>
+                        <div class="col">
+                            <h3>明るい紫</h3>
+                            <div style="background-color: #c9ace6">#c9ace6</div>
+                            <div style="background-color: #c9ace6">201,172,230</div>
+                            <div style="color: #c9ace6">#c9ace6</div>
+                            <div style="color: #c9ace6">201,172,230</div>
+                        </div>
+                        <div class="col">
+                            <h3>グレー</h3>
+                            <div style="background-color: #84919e">#84919e</div>
+                            <div style="background-color: #84919e">132,145,158</div>
+                            <div style="color: #84919e">#84919e</div>
+                            <div style="color: #84919e">132,145,158</div>
+                        </div>
+                        <div class="col">
+                            <h3>明るいグレー</h3>
+                            <div style="background-color: #c8c8cb">#c8c8cb</div>
+                            <div style="background-color: #c8c8cb">200,200,203</div>
+                            <div style="color: #c8c8cb">#c8c8cb</div>
+                            <div style="color: #c8c8cb">200,200,203</div>
+                        </div>
+                    </div>
+                </section>
+                <section id="spy2">
+                    <h2>明度補正</h2>
+                    <div class="row g-0 pb-4 text-center color-view">
+                        <div class="col-12 col-lg-6">
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #fff7f5">#fff7f5</div>
+                                <div class="col" style="background-color: #ffefec">#ffefec</div>
+                                <div class="col" style="background-color: #ffe8e3">#ffe8e3</div>
+                                <div class="col" style="background-color: #ffe0da">#ffe0da</div>
+                                <div class="col" style="background-color: #ffd9d1">#ffd9d1</div>
+                                <div class="col" style="background-color: #ffd1c8">#ffd1c8</div>
+                                <div class="col" style="background-color: #ffcabf">#ffcabf</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #fff7ec">#fff7ec</div>
+                                <div class="col" style="background-color: #ffefda">#ffefda</div>
+                                <div class="col" style="background-color: #ffe8c8">#ffe8c8</div>
+                                <div class="col" style="background-color: #ffe0b6">#ffe0b6</div>
+                                <div class="col" style="background-color: #ffd9a4">#ffd9a4</div>
+                                <div class="col" style="background-color: #ffd192">#ffd192</div>
+                                <div class="col" style="background-color: #ffca80">#ffca80</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #ffffec">#ffffec</div>
+                                <div class="col" style="background-color: #ffffda">#ffffda</div>
+                                <div class="col" style="background-color: #ffffc8">#ffffc8</div>
+                                <div class="col" style="background-color: #ffffb6">#ffffb6</div>
+                                <div class="col" style="background-color: #ffffa4">#ffffa4</div>
+                                <div class="col" style="background-color: #ffff92">#ffff92</div>
+                                <div class="col" style="background-color: #ffff80">#ffff80</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #f9fde6">#f9fde6</div>
+                                <div class="col" style="background-color: #f3fbce">#f3fbce</div>
+                                <div class="col" style="background-color: #eef9b6">#eef9b6</div>
+                                <div class="col" style="background-color: #e8f79d">#e8f79d</div>
+                                <div class="col" style="background-color: #e3f585">#e3f585</div>
+                                <div class="col" style="background-color: #ddf36d">#ddf36d</div>
+                                <div class="col" style="background-color: #d8f255">#d8f255</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #ebf9f2">#ebf9f2</div>
+                                <div class="col" style="background-color: #d8f4e6">#d8f4e6</div>
+                                <div class="col" style="background-color: #c4eed9">#c4eed9</div>
+                                <div class="col" style="background-color: #b1e9cd">#b1e9cd</div>
+                                <div class="col" style="background-color: #9de3c0">#9de3c0</div>
+                                <div class="col" style="background-color: #8adeb4">#8adeb4</div>
+                                <div class="col" style="background-color: #77d9a8">#77d9a8</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #f5fbff">#f5fbff</div>
+                                <div class="col" style="background-color: #ecf7ff">#ecf7ff</div>
+                                <div class="col" style="background-color: #e3f3ff">#e3f3ff</div>
+                                <div class="col" style="background-color: #daefff">#daefff</div>
+                                <div class="col" style="background-color: #d1ebff">#d1ebff</div>
+                                <div class="col" style="background-color: #c8e7ff">#c8e7ff</div>
+                                <div class="col" style="background-color: #bfe4ff">#bfe4ff</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #f7f3fb">#f7f3fb</div>
+                                <div class="col" style="background-color: #efe7f7">#efe7f7</div>
+                                <div class="col" style="background-color: #e7dbf4">#e7dbf4</div>
+                                <div class="col" style="background-color: #e0cff0">#e0cff0</div>
+                                <div class="col" style="background-color: #d8c3ed">#d8c3ed</div>
+                                <div class="col" style="background-color: #d0b7e9">#d0b7e9</div>
+                                <div class="col" style="background-color: #c9ace6">#c9ace6</div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6" style="color: #fff">
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #ffcabf">#ffcabf</div>
+                                <div class="col" style="background-color: #daada3">#daada3</div>
+                                <div class="col" style="background-color: #b69088">#b69088</div>
+                                <div class="col" style="background-color: #91736d">#91736d</div>
+                                <div class="col" style="background-color: #6d5651">#6d5651</div>
+                                <div class="col" style="background-color: #483936">#483936</div>
+                                <div class="col" style="background-color: #241c1b">#241c1b</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #ffca80">#ffca80</div>
+                                <div class="col" style="background-color: #daad6d">#daad6d</div>
+                                <div class="col" style="background-color: #b6905b">#b6905b</div>
+                                <div class="col" style="background-color: #917349">#917349</div>
+                                <div class="col" style="background-color: #6d5636">#6d5636</div>
+                                <div class="col" style="background-color: #483924">#483924</div>
+                                <div class="col" style="background-color: #241c12">#241c12</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #ffff80">#ffff80</div>
+                                <div class="col" style="background-color: #dada6d">#dada6d</div>
+                                <div class="col" style="background-color: #b6b65b">#b6b65b</div>
+                                <div class="col" style="background-color: #919149">#919149</div>
+                                <div class="col" style="background-color: #6d6d36">#6d6d36</div>
+                                <div class="col" style="background-color: #484824">#484824</div>
+                                <div class="col" style="background-color: #242412">#242412</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #d8f255">#d8f255</div>
+                                <div class="col" style="background-color: #b9cf48">#b9cf48</div>
+                                <div class="col" style="background-color: #9aac3c">#9aac3c</div>
+                                <div class="col" style="background-color: #7b8a30">#7b8a30</div>
+                                <div class="col" style="background-color: #5c6724">#5c6724</div>
+                                <div class="col" style="background-color: #3d4518">#3d4518</div>
+                                <div class="col" style="background-color: #1e220c">#1e220c</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #77d9a8">#77d9a8</div>
+                                <div class="col" style="background-color: #66ba90">#66ba90</div>
+                                <div class="col" style="background-color: #559b78">#559b78</div>
+                                <div class="col" style="background-color: #447c60">#447c60</div>
+                                <div class="col" style="background-color: #335d48">#335d48</div>
+                                <div class="col" style="background-color: #223e30">#223e30</div>
+                                <div class="col" style="background-color: #101e17">#101e17</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #bfe4ff">#bfe4ff</div>
+                                <div class="col" style="background-color: #a3c3da">#a3c3da</div>
+                                <div class="col" style="background-color: #88a2b6">#88a2b6</div>
+                                <div class="col" style="background-color: #6d8291">#6d8291</div>
+                                <div class="col" style="background-color: #51616d">#51616d</div>
+                                <div class="col" style="background-color: #364148">#364148</div>
+                                <div class="col" style="background-color: #1b2024">#1b2024</div>
+                            </div>
+                            <div class="row g-0">
+                                <div class="col" style="background-color: #c9ace6">#c9ace6</div>
+                                <div class="col" style="background-color: #ac93c5">#ac93c5</div>
+                                <div class="col" style="background-color: #8f7aa4">#8f7aa4</div>
+                                <div class="col" style="background-color: #726283">#726283</div>
+                                <div class="col" style="background-color: #564962">#564962</div>
+                                <div class="col" style="background-color: #393141">#393141</div>
+                                <div class="col" style="background-color: #1c1820">#1c1820</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- <section id="spy3">
+                    <h2>Blend</h2>
+                    <p class="pb-4">後で追加</p>
+                </section> -->
+                <section id="spy4">
+                    <h2>作品</h2>
+                    <div class="row row-cols-1 row-cols-md-2">
+                        <div class="col">
+                            <h3 class="colors-title">ぼっち・ざ・ろっく！</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="background-color: #ff2291">#FF2291</div>
+                                <div class="col" style="background-color: #ffb400">#FFB400</div>
+                                <div class="col" style="background-color: #02d1e0">#02D1E0</div>
+                                <div class="col" style="background-color: #ff4637">#FF4637</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">リコリス・リコイル</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="background-color: #ef545b">#ef545b</div>
+                                <div class="col" style="background-color: #00b4ac">#00b4ac</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">ぬきたし</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="color: #fff; background-color: #fd3d2e">#fd3d2e</div>
+                                <div class="col" style="color: #fff; background-color: #151218">#151218</div>
+                                <div class="col" style="color: #fff; background-color: #15141b">#15141b</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">ヘンプリ</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="background-color: #fdff00">#fdff00</div>
+                                <div class="col" style="color: #fff; background-color: #000000">#000000</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">さくらの雲*スカアレットの恋</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="background-color: #f25242">#f25242</div>
+                                <div class="col" style="background-color: #e6bf68">#e6bf68</div>
+                                <div class="col" style="background-color: #72b0cb">#72b0cb</div>
+                                <div class="col" style="background-color: #9c92c9">#9c92c9</div>
+                                <div class="col" style="background-color: #ff9a91">#ff9a91</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">ハミダシクリエイティブ</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="background-color: #f57da6">#f57da6</div>
+                                <div class="col" style="background-color: #fdc164">#fdc164</div>
+                                <div class="col" style="background-color: #9b7aee">#9b7aee</div>
+                                <div class="col" style="background-color: #4bbaf2">#4bbaf2</div>
+                                <div class="col" style="color: #fff; background-color: #e03331">#e03331</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">ハミダシクリエイティブ凸</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="color: #fff; background-color: #e6316d">#e6316d</div>
+                                <div class="col" style="background-color: #f9bf1d">#f9bf1d</div>
+                                <div class="col" style="color: #fff; background-color: #01a4e1">#01a4e1</div>
+                                <div class="col" style="color: #fff; background-color: #e6813b">#e6813b</div>
+                                <div class="col" style="color: #fff; background-color: #4d448d">#4d448d</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">LOOPERS</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="color: #fff; background-color: #e80094">#e80094</div>
+                                <div class="col" style="background-color: #cafb57">#cafb57</div>
+                                <div class="col" style="color: #fff; background-color: #689500">#689500</div>
+                                <div class="col" style="color: #fff; background-color: #ff361d">#ff361d</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">LUNARiA -Virtualized Moonchild-</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="color: #fff; background-color: #3955c9">#3955c9</div>
+                                <div class="col" style="background-color: #fff954">#fff954</div>
+                                <div class="col" style="background-color: #5adae8">#5adae8</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">蒼の彼方のフォーリズム</h3>
+                            <div class="row mb-2 g-0 text-center color-view">
+                                <div class="col" style="color: #fff; background-color: #fe3668">#fe3668</div>
+                                <div class="col" style="color: #fff; background-color: #c136fe">#c136fe</div>
+                                <div class="col" style="background-color: #febc12">#febc12</div>
+                                <div class="col" style="background-color: #27cc90">#27cc90</div>
+                                <div class="col" style="color: #fff; background-color: #0072f4">#27cc90</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <h3 class="colors-title">蒼の彼方のフォーリズム</h3>
+                            <div class="row row-cols-5 row-cols-xl-7 mb-2 g-0 text-center color-view">
+                                <div class="col" style="color: #fff; background-color: #f01d76">#f01d76</div>
+                                <div class="col" style="color: #fff; background-color: #774da1">#774da1</div>
+                                <div class="col" style="background-color: #e5b200">#e5b200</div>
+                                <div class="col" style="background-color: #00c6c4">#00c6c4</div>
+                                <div class="col d-none d-xl-block" style="color: #fff; background-color: #8f5b92">#8f5b92</div>
+                                <div class="col d-none d-xl-block" style="color: #fff; background-color: #74a12e">#74a12e</div>
+                                <div class="col d-none d-xl-block" style="color: #fff; background-color: #c43dbe">#c43dbe</div>
+                                <div class="col d-none d-xl-block" style="background-color: #e5ac15">#e5ac15</div>
+                                <div class="col d-none d-xl-block" style="background-color: #fead00">#fead00</div>
+                                <div class="col d-none d-xl-block" style="background-color: #00d4a6">#00d4a6</div>
+                                <div class="col d-none d-xl-block" style="background-color: #3ea960">#3ea960</div>
+                                <div class="col d-none d-xl-block" style="color: #fff; background-color: #3347af">#3347af</div>
+                                <div class="col d-none d-xl-block" style="color: #fff; background-color: #db3d4c">#db3d4c</div>
+                                <div class="col" style="color: #fff; background-color: #007efc">#007efc</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
