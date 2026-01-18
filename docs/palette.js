@@ -243,6 +243,107 @@ const palette = [
             },
         ],
     },
+    {
+        title: "カラーユニバーサルデザイン推奨配色セット",
+        type: "other",
+        colorList: [
+            {
+                hex: "#ff4b00",
+                desc: "赤",
+                type: "accent",
+            },
+            {
+                hex: "#f6aa00",
+                desc: "オレンジ",
+                type: "accent",
+            },
+            {
+                hex: "#fff100",
+                desc: "黄色",
+                type: "accent",
+            },
+            {
+                hex: "#03af7a",
+                desc: "緑",
+                type: "accent",
+            },
+            {
+                hex: "#005aff",
+                desc: "青",
+                type: "accent",
+            },
+            {
+                hex: "#4dc4ff",
+                desc: "空色",
+                type: "accent",
+            },
+            {
+                hex: "#990099",
+                desc: "紫",
+                type: "accent",
+            },
+            {
+                hex: "#804000",
+                desc: "ピンク",
+                type: "accent",
+            },
+            {
+                hex: "#ffcabf",
+                desc: "明るいピンク",
+                type: "base",
+            },
+            {
+                hex: "#ffca80",
+                desc: "ベージュ",
+                type: "base",
+            },
+            {
+                hex: "#ffff80",
+                desc: "クリーム",
+                type: "base",
+            },
+            {
+                hex: "#d8f255",
+                desc: "明るい黄緑",
+                type: "base",
+            },
+            {
+                hex: "#77d9a8",
+                desc: "明るい緑",
+                type: "base",
+            },
+            {
+                hex: "#bfe4ff",
+                desc: "明るい空色",
+                type: "base",
+            },
+            {
+                hex: "#c9ace6",
+                desc: "明るい紫",
+                type: "base",
+            },
+            {
+                hex: "#ffffff",
+                desc: "白",
+                type: "achromatic",
+            },
+            {
+                hex: "#c8c8cb",
+                desc: "明るいグレー",
+                type: "achromatic",
+            },
+            {
+                hex: "#84919e",
+                desc: "灰色",
+                type: "achromatic",
+            },
+            {
+                hex: "#000000",
+                desc: "黒",
+                type: "achromatic",
+            },
+        ],
+    },
 ];
 
 /**
