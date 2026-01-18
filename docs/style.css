@@ -1,0 +1,56 @@
+h1 {
+    font-size: 24px;
+}
+h2 {
+    font-size: 20px;
+}
+h3 {
+    font-size: 1em;
+    font-weight: normal;
+}
+.colors-title {
+    font-size: 1em;
+    font-weight: normal;
+    margin: 4px 0;
+}
+.nav-pills .nav-link {
+    padding: 4px 8px;
+    margin: 4px 0;
+}
+
+.color-overview {
+    font-size: 0.75rem;
+    padding: 0.25rem 0;
+    font-family: consolas, "Myrica M", "Noto Sans Mono", monospace;
+}
+.modal-color-overview {
+    width: 2.75rem;
+    height: 2.75rem;
+}
+.contrast-overview {
+    font-size: 1.5rem;
+    height: 2.75rem;
+    padding: 0.25rem 0;
+    font-family: consolas, "Myrica M", "Noto Sans Mono", monospace;
+    font-weight: bold;
+}
+.contrast-text-brack {
+    color: #000;
+}
+.contrast-text-white {
+    color: #fff;
+}
+.contrast-bg-black {
+    background-color: #000;
+}
+.contrast-bg-white {
+    background-color: #fff;
+}
+
+#detailModalTable th {
+    width: 8rem;
+}
+
+p {
+    text-indent: 1em;
+}
