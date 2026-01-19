@@ -365,6 +365,14 @@ const setModalContent = (color) => {
 
     document.getElementById("cellHex").textContent = color.hex;
     document.getElementById("cellRgb").textContent = chroma(color.hex).rgb().join(" ");
+    document.getElementById("cellHsv").textContent = chroma(color.hex)
+        .hsv()
+        .map((v, i) => (i === 0 ? Math.round(v) || 0 : Math.round(v * 100) + "%"))
+        .join(" ");
+    document.getElementById("cellHsl").textContent = chroma(color.hex)
+        .hsl()
+        .map((v, i) => (i === 0 ? Math.round(v) || 0 : Math.round(v * 100) + "%"))
+        .join(" ");
 
     document.getElementById("modalDescription").textContent = color.desc;
 };
