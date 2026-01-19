@@ -1,5 +1,102 @@
 const palette = [
     {
+        title: "CUD推奨配色セット(アクセントカラー)",
+        type: "other",
+        colorList: [
+            {
+                hex: "#ff4b00",
+                desc: "赤",
+                type: "",
+            },
+            {
+                hex: "#f6aa00",
+                desc: "オレンジ",
+                type: "",
+            },
+            {
+                hex: "#fff100",
+                desc: "黄色",
+                type: "",
+            },
+            {
+                hex: "#03af7a",
+                desc: "緑",
+                type: "",
+            },
+            {
+                hex: "#005aff",
+                desc: "青",
+                type: "",
+            },
+            {
+                hex: "#4dc4ff",
+                desc: "空色",
+                type: "",
+            },
+            {
+                hex: "#990099",
+                desc: "紫",
+                type: "",
+            },
+            {
+                hex: "#804000",
+                desc: "ピンク",
+                type: "",
+            },
+            {
+                hex: "#84919e",
+                desc: "灰色",
+                type: "",
+            },
+        ],
+    },
+    {
+        title: "CUD推奨配色セット(ベースカラー)",
+        type: "other",
+        colorList: [
+            {
+                hex: "#ffcabf",
+                desc: "明るいピンク",
+                type: "",
+            },
+            {
+                hex: "#ffca80",
+                desc: "ベージュ",
+                type: "",
+            },
+            {
+                hex: "#ffff80",
+                desc: "クリーム",
+                type: "",
+            },
+            {
+                hex: "#d8f255",
+                desc: "明るい黄緑",
+                type: "",
+            },
+            {
+                hex: "#77d9a8",
+                desc: "明るい緑",
+                type: "",
+            },
+            {
+                hex: "#bfe4ff",
+                desc: "明るい空色",
+                type: "",
+            },
+            {
+                hex: "#c9ace6",
+                desc: "明るい紫",
+                type: "",
+            },
+            {
+                hex: "#c8c8cb",
+                desc: "明るいグレー",
+                type: "",
+            },
+        ],
+    },
+    {
         title: "ぼっち・ざ・ろっく！",
         type: "anime",
         colorList: [
@@ -243,177 +340,19 @@ const palette = [
             },
         ],
     },
-    {
-        title: "カラーユニバーサルデザイン推奨配色セット",
-        type: "other",
-        colorList: [
-            {
-                hex: "#ff4b00",
-                desc: "赤",
-                type: "accent",
-            },
-            {
-                hex: "#f6aa00",
-                desc: "オレンジ",
-                type: "accent",
-            },
-            {
-                hex: "#fff100",
-                desc: "黄色",
-                type: "accent",
-            },
-            {
-                hex: "#03af7a",
-                desc: "緑",
-                type: "accent",
-            },
-            {
-                hex: "#005aff",
-                desc: "青",
-                type: "accent",
-            },
-            {
-                hex: "#4dc4ff",
-                desc: "空色",
-                type: "accent",
-            },
-            {
-                hex: "#990099",
-                desc: "紫",
-                type: "accent",
-            },
-            {
-                hex: "#804000",
-                desc: "ピンク",
-                type: "accent",
-            },
-            {
-                hex: "#ffcabf",
-                desc: "明るいピンク",
-                type: "base",
-            },
-            {
-                hex: "#ffca80",
-                desc: "ベージュ",
-                type: "base",
-            },
-            {
-                hex: "#ffff80",
-                desc: "クリーム",
-                type: "base",
-            },
-            {
-                hex: "#d8f255",
-                desc: "明るい黄緑",
-                type: "base",
-            },
-            {
-                hex: "#77d9a8",
-                desc: "明るい緑",
-                type: "base",
-            },
-            {
-                hex: "#bfe4ff",
-                desc: "明るい空色",
-                type: "base",
-            },
-            {
-                hex: "#c9ace6",
-                desc: "明るい紫",
-                type: "base",
-            },
-            {
-                hex: "#ffffff",
-                desc: "白",
-                type: "achromatic",
-            },
-            {
-                hex: "#c8c8cb",
-                desc: "明るいグレー",
-                type: "achromatic",
-            },
-            {
-                hex: "#84919e",
-                desc: "灰色",
-                type: "achromatic",
-            },
-            {
-                hex: "#000000",
-                desc: "黒",
-                type: "achromatic",
-            },
-        ],
-    },
 ];
 
 /**
- * hexカラーコードをRGBに変換する。
- * @param {string} hex #000000 ～ #ffffff
- * @returns {{r: number, g: number, b: number}}
- */
-const hexToRGB = (hex) => {
-    const r = parseInt(hex.substring(1, 3), 16);
-    const g = parseInt(hex.substring(3, 5), 16);
-    const b = parseInt(hex.substring(5, 7), 16);
-
-    return { r, g, b };
-};
-
-/**
- * rgbの1つの値から輝度を計算する
- * @param {number} color 色 [0 - 255]
- * @returns {number} 輝度
- */
-const calculateLuminance = (color) => {
-    const c = color / 255;
-    return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
-};
-
-/**
- * 相対輝度を算出する。
- * @param {number} red 赤 [0 - 255]
- * @param {number} green 緑 [0 - 255]
- * @param {number} blue 青 [0 - 255]
+ * 適切な文字色をコントラスト比から取得する。
+ * @param {string} bgHex 背景色(hex)
  * @returns
  */
-const caluculateRelativeLuminance = (color) => {
-    const R = calculateLuminance(color.r);
-    const G = calculateLuminance(color.g);
-    const B = calculateLuminance(color.b);
-    return 0.2126 * R + 0.7152 * G + 0.0722 * B;
-};
+const chooseTextColor = (bgHex) => {
+    const bg = chroma(bgHex);
 
-/**
- * 2色のコントラスト比を求める
- * @param {*} color1 相対輝度
- * @param {*} color2 相対輝度
- * @returns
- */
-const caluculateContrastRatio = (color1, color2) => {
-    const luminance1 = caluculateRelativeLuminance(color1);
-    const luminance2 = caluculateRelativeLuminance(color2);
-    const bright = Math.max(luminance1, luminance2);
-    const dark = Math.min(luminance1, luminance2);
-    return (bright + 0.05) / (dark + 0.05);
-};
-
-/**
- * 背景色との相対輝度から文字色を選択する。
- *
- * @param {number} red 赤 [0 - 255]
- * @param {number} green 緑 [0 - 255]
- * @param {number} blue 青 [0 - 255]
- * @returns 文字色
- */
-const chooseTextColorFromBackground = (red, green, blue) => {
-    const bg = caluculateRelativeLuminance(red, green, blue);
-    const white = 1;
-    const black = 0;
-
-    // 白と背景色のコントラスト比
-    const contrastWhite = caluculateContrastRatio(white, bg);
-    // 黒と背景色のコントラスト比
-    const contrastBlack = caluculateContrastRatio(bg, black);
+    // 白と黒のコントラストを比較
+    const contrastWhite = chroma.contrast(bg, "white");
+    const contrastBlack = chroma.contrast(bg, "black");
 
     return contrastWhite < contrastBlack ? "black" : "white";
 };
@@ -425,11 +364,9 @@ const setModalContent = (color) => {
     document.getElementById("contrast-bg-white").style.color = color.hex;
 
     document.getElementById("cellHex").textContent = color.hex;
-    const rgb = hexToRGB(color.hex);
-    document.getElementById("cellRgb").textContent = `${rgb.r} ${rgb.g} ${rgb.b}`;
+    document.getElementById("cellRgb").textContent = chroma(color.hex).rgb().join(" ");
 
-    document.getElementById("cellDesc").textContent = color.desc;
-    document.getElementById("cellType").textContent = color.type;
+    document.getElementById("modalDescription").textContent = color.desc;
 };
 
 const handleClickModalOverview = (color) => {
@@ -479,8 +416,7 @@ const createOverview = () => {
             colorColDiv.classList.add("col", "color-overview");
             colorColDiv.textContent = color.hex;
             colorColDiv.style.background = color.hex;
-
-            //colorColDiv.style.color = chooseTextColorFromBackground(hexToRGB(color.hex));
+            colorColDiv.style.color = chooseTextColor(color.hex);
 
             colorColDiv.addEventListener("click", (event) => handleClickOverview(work, color));
 
@@ -502,36 +438,9 @@ const handleHiddenModal = () => {
 };
 
 document.addEventListener("DOMContentLoaded", (event) => {
+    console.log(chroma("red").hex());
+
     createOverview();
-
-    Array.from(document.querySelectorAll("div.color-overview")).forEach((block) => {
-        const rgb = block.style.backgroundColor.match(/\d+/g);
-        const r = parseInt(rgb[0], 10);
-        const g = parseInt(rgb[1], 10);
-        const b = parseInt(rgb[2], 10);
-        block.style.color = chooseTextColor(r, g, b);
-    });
-    function chooseTextColor(red, green, blue) {
-        //相対輝度
-        const toRgbItem = (item) => {
-            const i = item / 255;
-            return i <= 0.03928 ? i / 12.92 : Math.pow((i + 0.055) / 1.055, 2.4);
-        };
-        const R = toRgbItem(red);
-        const G = toRgbItem(green);
-        const B = toRgbItem(blue);
-        const Lbg = 0.2126 * R + 0.7152 * G + 0.0722 * B;
-
-        const Lw = 1;
-        const Lb = 0;
-
-        // 白と背景色のコントラスト比
-        const Cw = (Lw + 0.05) / (Lbg + 0.05);
-        // 黒と背景色のコントラスト比
-        const Cb = (Lbg + 0.05) / (Lb + 0.05);
-
-        return Cw < Cb ? "black" : "white";
-    }
 
     document.getElementById("detailModal").addEventListener("hidden.bs.modal", (event) => handleHiddenModal());
 });

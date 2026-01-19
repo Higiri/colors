@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
         <link href="./bootstrap_color.css" rel="stylesheet" />
         <link href="./style.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js"></script>
         <script src="./palette.js"></script>
     </head>
     <body>
@@ -22,7 +23,7 @@
                 <div><!-- ここにモード切替 --></div>
             </div>
         </nav>
-        <main class="container pt-3 pb-5">
+        <main class="container main-contents">
             <div id="overviewArea" class="row row-cols-1 row-cols-xl-2"></div>
         </main>
         <footer class="navbar fixed-bottom bg-body-tertiary">
@@ -45,17 +46,7 @@
                             <div class="flex-fill">
                                 <div class="row g-1 mb-2 text-center">
                                     <div class="col">
-                                        <div class="d-flex justify-content-center contrast-overview contrast-text-brack" id="contrast-text-brack">
-                                            <div>あ</div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
                                         <div class="d-flex justify-content-center contrast-overview contrast-text-white" id="contrast-text-white">
-                                            <div>あ</div>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="d-flex justify-content-center border contrast-overview contrast-bg-black" id="contrast-bg-black">
                                             <div>あ</div>
                                         </div>
                                     </div>
@@ -64,8 +55,18 @@
                                             <div>あ</div>
                                         </div>
                                     </div>
+                                    <div class="col">
+                                        <div class="d-flex justify-content-center contrast-overview contrast-text-brack" id="contrast-text-brack">
+                                            <div>あ</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex justify-content-center border contrast-overview contrast-bg-black" id="contrast-bg-black">
+                                            <div>あ</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <table id="detailModalTable" class="table table-sm">
+                                <table id="detailModalTable" class="table table-sm mb-2">
                                     <tbody>
                                         <tr>
                                             <th scope="row">Hex</th>
@@ -75,16 +76,9 @@
                                             <th scope="row">RGB</th>
                                             <td id="cellRgb"></td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">Description</th>
-                                            <td id="cellDesc"></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Type</th>
-                                            <td id="cellType"></td>
-                                        </tr>
                                     </tbody>
                                 </table>
+                                <p id="modalDescription"></p>
                             </div>
                         </div>
                     </div>

@@ -48,9 +48,12 @@ h3 {
 }
 
 #detailModalTable th {
-    width: 8rem;
+    width: 3rem;
 }
-
+.main-contents {
+    padding-top: 0.5rem;
+    padding-bottom: 3.5rem;
+}
 p {
     text-indent: 1em;
 }
