@@ -89,12 +89,4 @@ p {
     z-index: 10;
     /* マウスオーバー時に拡大率を変更 */
     --scale: 1.02;
-
-    /* 青いフォーカスリング（縁取り）のみ残す */
-    filter: drop-shadow(0 0 4px rgba(13, 110, 253, 0.6)) drop-shadow(0 0 1px rgba(13, 110, 253, 1));
-}
-
-.controls {
-    display: flex;
-    gap: 10px;
 }

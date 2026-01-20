@@ -381,12 +381,10 @@ const handleClickModalOverview = (color) => {
     setModalContent(color);
 };
 
-const createModalOverview = (colorList) => {
-    drawDonutWheel(colorList, "wheel-container", 350, 2 / 3, 1);
-};
 const handleClickOverview = (work, color) => {
     document.getElementById("detailModalTitle").textContent = work.title;
-    createModalOverview(work.colorList);
+
+    drawDonutWheel(work.colorList, "wheel-container", getCalculatedSize(), 2 / 3, 1);
     setModalContent(color);
 
     const detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
@@ -430,12 +428,16 @@ const createOverview = () => {
 
 const handleHiddenModal = () => {
     document.getElementById("detailModalTitle").textContent = "";
-    const modalColorOverview = document.getElementById("modalColorOverview");
-    while (modalColorOverview.firstChild) {
-        modalColorOverview.removeChild(modalColorOverview.firstChild);
-    }
     resetWheel();
 };
+
+function getCalculatedSize() {
+    const vw100 = window.innerWidth;
+
+    const responsiveSize = vw100 - 65;
+
+    return Math.min(responsiveSize, 360);
+}
 
 /**
  * 描画処理
@@ -505,7 +507,11 @@ function calculateSectorPath(cx, cy, rOuter, rInner, startDeg, endDeg) {
  */
 function resetWheel() {
     const container = document.getElementById("wheel-container");
-    if (container) container.innerHTML = "";
+    if (!container) return;
+
+    while (container.lastChild) {
+        container.removeChild(container.lastChild);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {

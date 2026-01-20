@@ -32,59 +32,65 @@
             </div>
         </footer>
         <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header py-2">
                         <h1 class="modal-title fs-5" id="detailModalTitle"></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="d-flex justify-content-center mb-3">
-                            <div id="wheel-container"></div>
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="d-flex justify-content-center mb-3">
+                                    <div id="wheel-container"></div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg">
+                                <div class="row g-1 mb-2 text-center">
+                                    <div class="col">
+                                        <div class="d-flex justify-content-center contrast-overview contrast-text-white" id="contrast-text-white">
+                                            <div>あ</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex justify-content-center border contrast-overview contrast-bg-white" id="contrast-bg-white">
+                                            <div>あ</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex justify-content-center contrast-overview contrast-text-brack" id="contrast-text-brack">
+                                            <div>あ</div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="d-flex justify-content-center border contrast-overview contrast-bg-black" id="contrast-bg-black">
+                                            <div>あ</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table id="detailModalTable" class="table table-sm mb-2">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Hex</th>
+                                            <td id="cellHex"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">RGB</th>
+                                            <td id="cellRgb"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">HSV</th>
+                                            <td id="cellHsv"></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">HSL</th>
+                                            <td id="cellHsl"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p id="modalDescription"></p>
+                            </div>
                         </div>
-                        <div class="row g-1 mb-2 text-center">
-                            <div class="col">
-                                <div class="d-flex justify-content-center contrast-overview contrast-text-white" id="contrast-text-white">
-                                    <div>あ</div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="d-flex justify-content-center border contrast-overview contrast-bg-white" id="contrast-bg-white">
-                                    <div>あ</div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="d-flex justify-content-center contrast-overview contrast-text-brack" id="contrast-text-brack">
-                                    <div>あ</div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="d-flex justify-content-center border contrast-overview contrast-bg-black" id="contrast-bg-black">
-                                    <div>あ</div>
-                                </div>
-                            </div>
-                        </div>
-                        <table id="detailModalTable" class="table table-sm mb-2">
-                            <tbody>
-                                <tr>
-                                    <th scope="row">Hex</th>
-                                    <td id="cellHex"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">RGB</th>
-                                    <td id="cellRgb"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">HSV</th>
-                                    <td id="cellHsv"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">HSL</th>
-                                    <td id="cellHsl"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p id="modalDescription"></p>
                     </div>
                 </div>
             </div>
