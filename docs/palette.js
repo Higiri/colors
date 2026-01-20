@@ -382,16 +382,7 @@ const handleClickModalOverview = (color) => {
 };
 
 const createModalOverview = (colorList) => {
-    const modalColorOverview = document.getElementById("modalColorOverview");
-    for (const color of colorList) {
-        const colorDiv = document.createElement("div");
-        colorDiv.classList.add("modal-color-overview");
-        colorDiv.style.background = color.hex;
-
-        colorDiv.addEventListener("click", (event) => handleClickModalOverview(color));
-
-        modalColorOverview.appendChild(colorDiv);
-    }
+    drawDonutWheel(colorList, "wheel-container", 350, 2 / 3, 1);
 };
 const handleClickOverview = (work, color) => {
     document.getElementById("detailModalTitle").textContent = work.title;
@@ -422,7 +413,7 @@ const createOverview = () => {
         for (const color of work.colorList) {
             const colorColDiv = document.createElement("div");
             colorColDiv.classList.add("col", "color-overview");
-            colorColDiv.textContent = color.hex;
+            //colorColDiv.textContent = color.hex;
             colorColDiv.style.background = color.hex;
             colorColDiv.style.color = chooseTextColor(color.hex);
 
@@ -443,7 +434,79 @@ const handleHiddenModal = () => {
     while (modalColorOverview.firstChild) {
         modalColorOverview.removeChild(modalColorOverview.firstChild);
     }
+    resetWheel();
 };
+
+/**
+ * 描画処理
+ */
+function drawDonutWheel(hexColors, containerId, size = 300, innerRatio = 0.5, offsetPx = 1) {
+    const container = document.getElementById(containerId);
+    resetWheel(); // 描画前に一度クリア
+
+    container.style.width = `${size}px`;
+    container.style.height = `${size}px`;
+
+    const count = hexColors.length;
+    const cx = size / 2;
+    const cy = size / 2;
+    const rOuter = size / 2;
+    const rInner = rOuter * innerRatio;
+    const step = 360 / count;
+
+    const rotationOffset = -90 - step / 2;
+
+    hexColors.forEach((color, index) => {
+        const startDeg = rotationOffset + index * step;
+        const endDeg = startDeg + step; // 隙間なし
+
+        // 1. パス生成 (スリットなしの完全な扇形)
+        const pathData = calculateSectorPath(cx, cy, rOuter, rInner, startDeg, endDeg);
+
+        // 2. 移動距離の計算 (中心から外側へ offsetPx 分移動)
+        const midDeg = startDeg + step / 2;
+        const midRad = (midDeg * Math.PI) / 180;
+        const tx = Math.cos(midRad) * offsetPx;
+        const ty = Math.sin(midRad) * offsetPx;
+
+        // 3. DOM生成
+        const div = document.createElement("div");
+        div.className = "color-sector";
+        div.style.backgroundColor = color.hex;
+        div.style.clipPath = `path('${pathData}')`;
+
+        // 擬似的なスリットを作るための移動
+        div.style.setProperty("--translate-x", `${tx}px`);
+        div.style.setProperty("--translate-y", `${ty}px`);
+
+        div.addEventListener("click", (event) => handleClickModalOverview(color));
+
+        container.appendChild(div);
+    });
+}
+
+function calculateSectorPath(cx, cy, rOuter, rInner, startDeg, endDeg) {
+    const toRad = (d) => (d * Math.PI) / 180;
+    const sR = toRad(startDeg),
+        eR = toRad(endDeg);
+
+    const p1 = { x: cx + rInner * Math.cos(sR), y: cy + rInner * Math.sin(sR) };
+    const p2 = { x: cx + rOuter * Math.cos(sR), y: cy + rOuter * Math.sin(sR) };
+    const p3 = { x: cx + rOuter * Math.cos(eR), y: cy + rOuter * Math.sin(eR) };
+    const p4 = { x: cx + rInner * Math.cos(eR), y: cy + rInner * Math.sin(eR) };
+
+    const largeArc = endDeg - startDeg > 180 ? 1 : 0;
+
+    return `M ${p1.x} ${p1.y} L ${p2.x} ${p2.y} A ${rOuter} ${rOuter} 0 ${largeArc} 1 ${p3.x} ${p3.y} L ${p4.x} ${p4.y} A ${rInner} ${rInner} 0 ${largeArc} 0 ${p1.x} ${p1.y} Z`;
+}
+
+/**
+ * リセット処理
+ */
+function resetWheel() {
+    const container = document.getElementById("wheel-container");
+    if (container) container.innerHTML = "";
+}
 
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log(chroma("red").hex());
