@@ -76,17 +76,17 @@ p {
     transform-origin: center center;
     transition: transform 0.1s ease-in-out;
 
-    /* カスタムプロパティ（初期値） */
     --translate-x: 0px;
     --translate-y: 0px;
     --scale: 1;
-
-    /* 移動と拡大を組み合わせて適用 */
     transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale));
 }
 
 .color-sector:hover {
     z-index: 10;
-    /* マウスオーバー時に拡大率を変更 */
     --scale: 1.02;
+}
+.color-sector.active {
+    z-index: 10;
+    --scale: 1.03;
 }

@@ -379,12 +379,14 @@ const setModalContent = (color) => {
 
 const handleClickModalOverview = (color) => {
     setModalContent(color);
+    document.getElementById("wheel-container").querySelector(".active").classList.remove("active");
+    document.getElementById("wheel-container").querySelector(`[data-hex="${color.hex}"]`).classList.add("active");
 };
 
 const handleClickOverview = (work, color) => {
     document.getElementById("detailModalTitle").textContent = work.title;
 
-    drawDonutWheel(work.colorList, "wheel-container", getCalculatedSize(), 2 / 3, 1);
+    drawDonutWheel(work.colorList, "wheel-container", getCalculatedSize(), 0.6, 1, color.hex);
     setModalContent(color);
 
     const detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
@@ -442,7 +444,7 @@ function getCalculatedSize() {
 /**
  * 描画処理
  */
-function drawDonutWheel(hexColors, containerId, size = 300, innerRatio = 0.5, offsetPx = 1) {
+function drawDonutWheel(hexColors, containerId, size = 300, innerRatio = 0.5, offsetPx = 1, activeColor = null) {
     const container = document.getElementById(containerId);
     resetWheel(); // 描画前に一度クリア
 
@@ -473,9 +475,15 @@ function drawDonutWheel(hexColors, containerId, size = 300, innerRatio = 0.5, of
 
         // 3. DOM生成
         const div = document.createElement("div");
-        div.className = "color-sector";
+        div.classList.add("color-sector");
         div.style.backgroundColor = color.hex;
         div.style.clipPath = `path('${pathData}')`;
+
+        if (activeColor && color.hex == activeColor) {
+            div.classList.add("active");
+        }
+
+        div.dataset.hex = color.hex;
 
         // 擬似的なスリットを作るための移動
         div.style.setProperty("--translate-x", `${tx}px`);
