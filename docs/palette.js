@@ -386,7 +386,7 @@ const handleClickModalOverview = (color) => {
 const handleClickOverview = (work, color) => {
     document.getElementById("detailModalTitle").textContent = work.title;
 
-    drawDonutWheel(work.colorList, "wheel-container", getCalculatedSize(), 0.6, 1, color.hex);
+    drawDonutWheel(work.colorList, "wheel-container", getCalculatedSize(), 0.6, 2, color.hex);
     setModalContent(color);
 
     const detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
@@ -438,7 +438,7 @@ function getCalculatedSize() {
 
     const responsiveSize = vw100 - 65;
 
-    return Math.min(responsiveSize, 360);
+    return Math.min(responsiveSize, 350);
 }
 
 /**
@@ -452,9 +452,10 @@ function drawDonutWheel(hexColors, containerId, size = 300, innerRatio = 0.5, of
     container.style.height = `${size}px`;
 
     const count = hexColors.length;
+    const margin = 12;
     const cx = size / 2;
     const cy = size / 2;
-    const rOuter = size / 2;
+    const rOuter = size / 2 - margin;
     const rInner = rOuter * innerRatio;
     const step = 360 / count;
 
