@@ -438,7 +438,7 @@ function getCalculatedSize() {
 
     const responsiveSize = vw100 - 65;
 
-    return Math.min(responsiveSize, 350);
+    return Math.min(responsiveSize, 360);
 }
 
 /**
@@ -524,8 +524,6 @@ function resetWheel() {
 }
 
 document.addEventListener("DOMContentLoaded", (event) => {
-    console.log(chroma("red").hex());
-
     createOverview();
 
     document.getElementById("detailModal").addEventListener("hidden.bs.modal", (event) => handleHiddenModal());
