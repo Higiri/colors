@@ -1,4 +1,4 @@
-const palette = [
+const paletteList = [
     {
         title: "CUD推奨配色セット(アクセントカラー)",
         type: "other",
@@ -357,12 +357,18 @@ const chooseTextColor = (bgHex) => {
     return contrastWhite < contrastBlack ? "black" : "white";
 };
 
+/**
+ * モーダルに表示する情報を設定する。
+ * @param {{ hex: string, desc: string, type: string}} color 色オブジェクト
+ */
 const setModalContent = (color) => {
-    document.getElementById("contrast-text-brack").style.backgroundColor = color.hex;
+    // コントラスト確認用
+    document.getElementById("contrast-text-black").style.backgroundColor = color.hex;
     document.getElementById("contrast-text-white").style.backgroundColor = color.hex;
     document.getElementById("contrast-bg-black").style.color = color.hex;
     document.getElementById("contrast-bg-white").style.color = color.hex;
 
+    // 表データ設定
     document.getElementById("cellHex").textContent = color.hex;
     document.getElementById("cellRgb").textContent = chroma(color.hex).rgb().join(" ");
     document.getElementById("cellHsv").textContent = chroma(color.hex)
@@ -374,11 +380,19 @@ const setModalContent = (color) => {
         .map((v, i) => (i === 0 ? Math.round(v) || 0 : Math.round(v * 100) + "%"))
         .join(" ");
 
+    // 色の詳細情報設定
     document.getElementById("modalDescription").textContent = color.desc;
 };
 
-const handleClickModalOverview = (color) => {
+/**
+ * 色相環の一片をクリックしたときの処理
+ * @param {{ hex: string, desc: string, type: string}} color クリックした色
+ */
+const handleClickModalWheelSector = (color) => {
+    // モーダルで表示する色を更新
     setModalContent(color);
+
+    // activeクラスの付け替え
     document.getElementById("wheel-container").querySelector(".active").classList.remove("active");
     document.getElementById("wheel-container").querySelector(`[data-hex="${color.hex}"]`).classList.add("active");
 };
@@ -399,7 +413,7 @@ const handleClickOverview = (work, color) => {
 const createOverview = () => {
     const overviewArea = document.getElementById("overviewArea");
 
-    for (const work of palette) {
+    for (const work of paletteList) {
         const workDiv = document.createElement("div");
         workDiv.classList.add("col");
 
@@ -490,7 +504,7 @@ function drawDonutWheel(hexColors, containerId, size = 300, innerRatio = 0.5, of
         div.style.setProperty("--translate-x", `${tx}px`);
         div.style.setProperty("--translate-y", `${ty}px`);
 
-        div.addEventListener("click", (event) => handleClickModalOverview(color));
+        div.addEventListener("click", (event) => handleClickModalWheelSector(color));
 
         container.appendChild(div);
     });
