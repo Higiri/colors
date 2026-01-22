@@ -368,20 +368,22 @@ const selectColorByContrastFor = (bgHex) => {
 };
 
 /**
- * カラーコードから表示用の各種フォーマット文字列を生成する
- * @param {string} hex
- * @returns {object} { rgb, hsv, hsl }
+ * PALETTE_LISTの各カラーオブジェクトに計算済みのフォーマット(rgb, hsv, hsl)を追加する
  */
-const generateColorFormats = (hex) => {
-    const chromaColor = chroma(hex);
-
+const preprocessPaletteData = () => {
     const formatArray = (arr) => arr.map((v, i) => (i === 0 ? Math.round(v) || 0 : Math.round(v * 100) + "%")).join(" ");
+    const formatCmyk = (arr) => arr.map((v) => Math.round(v * 100) + "%").join(" ");
 
-    return {
-        rgb: chromaColor.rgb().join(" "),
-        hsv: formatArray(chromaColor.hsv()),
-        hsl: formatArray(chromaColor.hsl()),
-    };
+    PALETTE_LIST.forEach((work) => {
+        work.colorList.forEach((color) => {
+            const c = chroma(color.hex);
+
+            color.rgb = c.rgb().join(" ");
+            color.hsv = formatArray(c.hsv());
+            color.hsl = formatArray(c.hsl());
+            color.cmyk = formatCmyk(c.cmyk());
+        });
+    });
 };
 
 /**
@@ -448,21 +450,22 @@ const clearContainer = (container) => {
  * モーダルの内容を更新する
  * @param {object} colorObj 色オブジェクト
  */
-const updateModalUI = (colorObj) => {
-    const hex = colorObj.hex;
-    const formats = generateColorFormats(hex);
-
+const updateModalContent = (colorObj) => {
     // コントラスト確認用
-    document.getElementById("contrast-text-black").style.backgroundColor = hex;
-    document.getElementById("contrast-text-white").style.backgroundColor = hex;
-    document.getElementById("contrast-bg-black").style.color = hex;
-    document.getElementById("contrast-bg-white").style.color = hex;
+    document.getElementById("contrast-text-black").style.backgroundColor = colorObj.hex;
+    document.getElementById("contrast-text-white").style.backgroundColor = colorObj.hex;
+    document.getElementById("contrast-bg-black").style.color = colorObj.hex;
+    document.getElementById("contrast-bg-white").style.color = colorObj.hex;
+
+    document.getElementById("contrast-white").textContent = chroma.contrast(colorObj.hex, "#ffffff").toFixed(2);
+    document.getElementById("contrast-black").textContent = chroma.contrast(colorObj.hex, "#000000").toFixed(2);
 
     // テキスト情報
-    document.getElementById("cellHex").textContent = hex;
-    document.getElementById("cellRgb").textContent = formats.rgb;
-    document.getElementById("cellHsv").textContent = formats.hsv;
-    document.getElementById("cellHsl").textContent = formats.hsl;
+    document.getElementById("cellHex").textContent = colorObj.hex;
+    document.getElementById("cellRgb").textContent = colorObj.rgb;
+    document.getElementById("cellHsv").textContent = colorObj.hsv;
+    document.getElementById("cellHsl").textContent = colorObj.hsl;
+    document.getElementById("cellCmyk").textContent = colorObj.cmyk;
     document.getElementById("modalDescription").textContent = colorObj.desc;
 };
 
@@ -578,7 +581,7 @@ const handleSectorClick = (event, colorObj) => {
     // 既にアクティブなら何もしない
     if (event.target.classList.contains("active")) return;
 
-    updateModalUI(colorObj);
+    updateModalContent(colorObj);
     highlightActiveSector(event.target);
 };
 
@@ -593,7 +596,7 @@ const openDetailModal = (work, colorObj) => {
     renderDonutWheel(work.colorList, colorObj.hex);
 
     // 詳細情報設定
-    updateModalUI(colorObj);
+    updateModalContent(colorObj);
 
     // Bootstrapモーダル表示
     const detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
@@ -608,11 +611,12 @@ const handleModalHidden = () => {
     clearContainer(document.getElementById("wheel-container"));
 };
 
-/* ==========================================================================
-   Initialization
-   ========================================================================== */
-
+/**
+ * 初期処理
+ */
 document.addEventListener("DOMContentLoaded", () => {
+    preprocessPaletteData();
+
     // 初期表示生成
     renderOverview();
 
