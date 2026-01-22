@@ -1,4 +1,14 @@
-const paletteList = [
+const CONFIG = {
+    WHEEL: {
+        MAX_SIZE: 360,
+        MARGIN_OFFSET: 65, // 画面幅から引くサイズ
+        SECTOR_MARGIN: 12, // セクター描画時の外周マージン
+        GAP_PX: 1.5, // スリット幅
+        INNER_RATIO: 0.6, // 内円の比率
+    },
+};
+
+const PALETTE_LIST = [
     {
         title: "CUD推奨配色セット(アクセントカラー)",
         type: "other",
@@ -358,59 +368,31 @@ const selectColorByContrastFor = (bgHex) => {
 };
 
 /**
- * モーダルに表示する情報を設定する。
- * @param {object} color 色オブジェクト
+ * カラーコードから表示用の各種フォーマット文字列を生成する
+ * @param {string} hex
+ * @returns {object} { rgb, hsv, hsl }
  */
-const setModalContent = (color) => {
-    // コントラスト確認用
-    document.getElementById("contrast-text-black").style.backgroundColor = color.hex;
-    document.getElementById("contrast-text-white").style.backgroundColor = color.hex;
-    document.getElementById("contrast-bg-black").style.color = color.hex;
-    document.getElementById("contrast-bg-white").style.color = color.hex;
+const generateColorFormats = (hex) => {
+    const chromaColor = chroma(hex);
 
-    // 表データ設定
-    document.getElementById("cellHex").textContent = color.hex;
-    document.getElementById("cellRgb").textContent = chroma(color.hex).rgb().join(" ");
-    document.getElementById("cellHsv").textContent = chroma(color.hex)
-        .hsv()
-        .map((v, i) => (i === 0 ? Math.round(v) || 0 : Math.round(v * 100) + "%"))
-        .join(" ");
-    document.getElementById("cellHsl").textContent = chroma(color.hex)
-        .hsl()
-        .map((v, i) => (i === 0 ? Math.round(v) || 0 : Math.round(v * 100) + "%"))
-        .join(" ");
+    const formatArray = (arr) => arr.map((v, i) => (i === 0 ? Math.round(v) || 0 : Math.round(v * 100) + "%")).join(" ");
 
-    // 色の詳細情報設定
-    document.getElementById("modalDescription").textContent = color.desc;
+    return {
+        rgb: chromaColor.rgb().join(" "),
+        hsv: formatArray(chromaColor.hsv()),
+        hsl: formatArray(chromaColor.hsl()),
+    };
 };
 
 /**
- * 色相環の一片をクリックしたときの処理
- * @param {Event} event
- * @param {object} color
- */
-const handleClickModalWheelSector = (event, color) => {
-    if (event.target.classList.contains("active")) {
-        return;
-    }
-    // モーダルで表示する色を更新
-    setModalContent(color);
-
-    // activeクラスの付け替え
-    document.getElementById("wheel-container").querySelector(".active").classList.remove("active");
-    event.target.classList.add("active");
-};
-
-/**
- * 2つの円弧（外周・内周）と2つの放射状の直線で構成される扇形（ドーナツの破片）のSVGパスデータを計算します。
- *
- * @param {number} cx - 中心点のX座標 (px)
- * @param {number} cy - 中心点のY座標 (px)
- * @param {number} rOuter - 外円の半径 (px)
- * @param {number} rInner - 内円の半径 (px)
- * @param {number} startDeg - 開始角度 (度数法、時計の3時方向が0度)
- * @param {number} endDeg - 終了角度 (度数法)
- * @returns {string} clip-path: path() で使用可能なSVGパス文字列
+ * 扇形のSVGパスデータを計算する
+ * @param {number} cx 中心X
+ * @param {number} cy 中心Y
+ * @param {number} rOuter 外半径
+ * @param {number} rInner 内半径
+ * @param {number} startDeg 開始角度
+ * @param {number} endDeg 終了角度
+ * @returns {string} path文字列
  */
 const calculateSectorPath = (cx, cy, rOuter, rInner, startDeg, endDeg) => {
     const toRad = (d) => (d * Math.PI) / 180;
@@ -445,93 +427,124 @@ const calculateSectorPath = (cx, cy, rOuter, rInner, startDeg, endDeg) => {
 };
 
 /**
- * 指定された色リストを元に、インタラクティブなドーナツ型色相環を描画します。
- * 各要素はdivで生成され、CSS変数を用いてスリット（移動）とホバー（拡大）を制御します。
- *
- * @param {string[]} hexColors - 描画する色の16進数コードの配列
- * @param {number} size - コンテナの直径 (px)
- * @param {number} innerRatio - 外円に対する内円の直径比率 (0.0〜1.0)
- * @param {number} offsetPx - 中心から外側への移動距離 (px)。これが擬似的なスリット幅になります
- * @param {string} activeColor
+ * 画面サイズに応じた色相環のサイズを計算する
  */
-const drawDonutWheel = (hexColors, size = 300, innerRatio = 0.5, offsetPx = 1, activeColor = null) => {
-    // 描画前に一度クリア
-    const container = document.getElementById("wheel-container");
-    while (container?.lastChild) {
+const calculateWheelSize = () => {
+    return Math.min(window.innerWidth - CONFIG.WHEEL.MARGIN_OFFSET, CONFIG.WHEEL.MAX_SIZE);
+};
+
+/**
+ * コンテナ内の要素を全削除する
+ * @param {HTMLElement} container
+ */
+const clearContainer = (container) => {
+    if (!container) return;
+    while (container.lastChild) {
         container.removeChild(container.lastChild);
     }
+};
 
+/**
+ * モーダルの内容を更新する
+ * @param {object} colorObj 色オブジェクト
+ */
+const updateModalUI = (colorObj) => {
+    const hex = colorObj.hex;
+    const formats = generateColorFormats(hex);
+
+    // コントラスト確認用
+    document.getElementById("contrast-text-black").style.backgroundColor = hex;
+    document.getElementById("contrast-text-white").style.backgroundColor = hex;
+    document.getElementById("contrast-bg-black").style.color = hex;
+    document.getElementById("contrast-bg-white").style.color = hex;
+
+    // テキスト情報
+    document.getElementById("cellHex").textContent = hex;
+    document.getElementById("cellRgb").textContent = formats.rgb;
+    document.getElementById("cellHsv").textContent = formats.hsv;
+    document.getElementById("cellHsl").textContent = formats.hsl;
+    document.getElementById("modalDescription").textContent = colorObj.desc;
+};
+
+/**
+ * 色相環上のアクティブなセクターを視覚的に切り替える
+ * @param {HTMLElement} targetElement クリックされた要素
+ */
+const highlightActiveSector = (targetElement) => {
+    const container = document.getElementById("wheel-container");
+    const currentActive = container.querySelector(".active");
+    if (currentActive) {
+        currentActive.classList.remove("active");
+    }
+    targetElement.classList.add("active");
+};
+
+/**
+ * ドーナツ型色相環を描画する
+ * @param {object[]} colorList 色オブジェクトの配列
+ * @param {string|null} activeHex 初期選択状態にする色のHEX
+ */
+const renderDonutWheel = (colorList, activeHex = null) => {
+    const container = document.getElementById("wheel-container");
+    clearContainer(container);
+
+    const size = calculateWheelSize();
     container.style.width = `${size}px`;
     container.style.height = `${size}px`;
 
-    const count = hexColors.length;
-    const margin = 12;
+    const { SECTOR_MARGIN, GAP_PX, INNER_RATIO } = CONFIG.WHEEL;
+
+    const count = colorList.length;
     const cx = size / 2;
     const cy = size / 2;
-    const rOuter = size / 2 - margin;
-    const rInner = rOuter * innerRatio;
+    const rOuter = size / 2 - SECTOR_MARGIN;
+    const rInner = rOuter * INNER_RATIO;
     const step = 360 / count;
-
     const rotationOffset = -90 - step / 2;
 
-    hexColors.forEach((color, index) => {
+    colorList.forEach((colorObj, index) => {
+        // --- 計算フェーズ ---
         const startDeg = rotationOffset + index * step;
-        const endDeg = startDeg + step; // 隙間なし
+        const endDeg = startDeg + step;
 
-        // 1. パス生成 (スリットなしの完全な扇形)
         const pathData = calculateSectorPath(cx, cy, rOuter, rInner, startDeg, endDeg);
 
-        // 2. 移動距離の計算 (中心から外側へ offsetPx 分移動)
+        // スリット用座標計算
         const midDeg = startDeg + step / 2;
         const midRad = (midDeg * Math.PI) / 180;
-        const tx = Math.cos(midRad) * offsetPx;
-        const ty = Math.sin(midRad) * offsetPx;
+        const tx = Math.cos(midRad) * GAP_PX;
+        const ty = Math.sin(midRad) * GAP_PX;
 
-        // 3. DOM生成
+        // --- DOM生成フェーズ ---
         const div = document.createElement("div");
         div.classList.add("color-sector");
-        div.style.backgroundColor = color.hex;
+        div.style.backgroundColor = colorObj.hex;
         div.style.clipPath = `path('${pathData}')`;
 
-        if (activeColor && color.hex == activeColor) {
-            div.classList.add("active");
-        }
-
-        div.dataset.hex = color.hex;
-
-        // 擬似的なスリットを作るための移動
+        // カスタムプロパティ設定
         div.style.setProperty("--translate-x", `${tx}px`);
         div.style.setProperty("--translate-y", `${ty}px`);
 
-        div.addEventListener("click", (event) => handleClickModalWheelSector(event, color));
+        // 初期アクティブ判定
+        if (activeHex && colorObj.hex === activeHex) {
+            div.classList.add("active");
+        }
+
+        // イベント設定
+        div.addEventListener("click", (event) => handleSectorClick(event, colorObj));
 
         container.appendChild(div);
     });
 };
 
 /**
- * 色相環のサイズを算出する。
- * @returns
+ * 作品一覧（オーバービュー）を生成する
  */
-const getCalculatedSize = () => Math.min(window.innerWidth - 65, 360);
-
-const handleClickOverview = (work, color) => {
-    document.getElementById("detailModalTitle").textContent = work.title;
-
-    drawDonutWheel(work.colorList, getCalculatedSize(), 0.6, 2, color.hex);
-    setModalContent(color);
-
-    const detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
-    detailModal.show();
-};
-
-/**
- * 色一覧のHTMLを構築する。
- */
-const createOverview = () => {
+const renderOverview = () => {
     const overviewArea = document.getElementById("overviewArea");
+    clearContainer(overviewArea); // 再描画対応
 
-    for (const work of paletteList) {
+    PALETTE_LIST.forEach((work) => {
         const workDiv = document.createElement("div");
         workDiv.classList.add("col");
 
@@ -542,38 +555,70 @@ const createOverview = () => {
         const colorRowDiv = document.createElement("div");
         colorRowDiv.classList.add("row", "g-0", "mb-2", "text-center");
 
-        for (const color of work.colorList) {
+        work.colorList.forEach((colorObj) => {
             const colorColDiv = document.createElement("div");
             colorColDiv.classList.add("col", "color-overview");
-            //colorColDiv.textContent = color.hex;
-            colorColDiv.style.background = color.hex;
-            //colorColDiv.style.color = selectColorByContrastFor(color.hex);
+            colorColDiv.style.background = colorObj.hex;
 
-            colorColDiv.addEventListener("click", (event) => handleClickOverview(work, color));
+            colorColDiv.addEventListener("click", () => openDetailModal(work, colorObj));
 
             colorRowDiv.appendChild(colorColDiv);
-        }
+        });
 
         workDiv.appendChild(h2Title);
         workDiv.appendChild(colorRowDiv);
         overviewArea.appendChild(workDiv);
-    }
+    });
 };
 
 /**
- * modalを非表示にしたときの処理
+ * 色相環のセクタークリック時
  */
-const handleHiddenModal = () => {
-    document.getElementById("detailModalTitle").textContent = "";
+const handleSectorClick = (event, colorObj) => {
+    // 既にアクティブなら何もしない
+    if (event.target.classList.contains("active")) return;
 
-    const container = document.getElementById("wheel-container");
-    while (container?.lastChild) {
-        container.removeChild(container.lastChild);
-    }
+    updateModalUI(colorObj);
+    highlightActiveSector(event.target);
 };
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    createOverview();
+/**
+ * オーバービューの色クリック時（モーダルを開く）
+ */
+const openDetailModal = (work, colorObj) => {
+    // タイトル設定
+    document.getElementById("detailModalTitle").textContent = work.title;
 
-    document.getElementById("detailModal").addEventListener("hidden.bs.modal", (event) => handleHiddenModal());
+    // ホイール描画
+    renderDonutWheel(work.colorList, colorObj.hex);
+
+    // 詳細情報設定
+    updateModalUI(colorObj);
+
+    // Bootstrapモーダル表示
+    const detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
+    detailModal.show();
+};
+
+/**
+ * モーダルが閉じた時のクリーンアップ
+ */
+const handleModalHidden = () => {
+    document.getElementById("detailModalTitle").textContent = "";
+    clearContainer(document.getElementById("wheel-container"));
+};
+
+/* ==========================================================================
+   Initialization
+   ========================================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 初期表示生成
+    renderOverview();
+
+    // モーダル閉鎖イベント
+    const modalEl = document.getElementById("detailModal");
+    if (modalEl) {
+        modalEl.addEventListener("hidden.bs.modal", handleModalHidden);
+    }
 });
