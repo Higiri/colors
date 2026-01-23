@@ -1,3 +1,7 @@
+:root {
+    --modal-active-color: #ffffff;
+}
+
 h1 {
     font-size: 24px;
 }
@@ -39,14 +43,18 @@ h3 {
 }
 .contrast-text-brack {
     color: #000;
+    background-color: var(--modal-active-color);
 }
 .contrast-text-white {
     color: #fff;
+    background-color: var(--modal-active-color);
 }
 .contrast-bg-black {
+    color: var(--modal-active-color);
     background-color: #000;
 }
 .contrast-bg-white {
+    color: var(--modal-active-color);
     background-color: #fff;
 }
 
@@ -88,5 +96,79 @@ p {
 }
 .color-sector.active {
     z-index: 10;
-    --scale: 1.03;
+    --scale: 1.04;
+}
+
+/* 進捗バー全体のレイアウト */
+/* コントラスト計全体のコンテナ */
+.contrast-meter {
+    width: 100%;
+    height: 65px; /* 上下の吹き出しを収めるための高さを固定 */
+    margin: 10px 0;
+    position: relative;
+    display: flex;
+    align-items: center; /* バーを垂直中央に配置 */
+}
+
+/* 共通のバー（背景） */
+.meter-bar-base {
+    width: 100%;
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+/* 現在値を示すインジケーター */
+.meter-bar-fill {
+    height: 100%;
+    background: var(--modal-active-color, #666);
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 吹き出し（メモリ）の共通スタイル */
+.marker {
+    position: absolute;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+/* 上側（普通テキスト用）：バーの中央(50%)から上に配置 */
+.marker-top {
+    bottom: calc(50% + 10px); /* バーの中央より10px上に配置 */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 60% 80%, 50% 100%, 40% 80%, 0% 80%);
+    padding-bottom: 7px;
+}
+
+/* 下側（大きいテキスト用）：バーの中央(50%)から下に配置 */
+.marker-bottom {
+    top: calc(50% + 10px); /* バーの中央より10px下に配置 */
+    clip-path: polygon(50% 0%, 60% 20%, 100% 20%, 100% 100%, 0% 100%, 0% 20%, 40% 20%);
+    padding-top: 7px;
+}
+
+/* 基準値ごとの色 */
+.bg-aa {
+    background-color: #a3cf62;
+}
+.bg-aaa {
+    background-color: #28a745;
+}
+
+/* 比率テキスト（バーの下に少し余裕を持って配置） */
+.ratio-display {
+    position: absolute;
+    right: 0;
+    top: calc(50% + 10px);
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #666;
 }

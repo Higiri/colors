@@ -3,7 +3,7 @@ const CONFIG = {
         MAX_SIZE: 360,
         MARGIN_OFFSET: 65, // 画面幅から引くサイズ
         SECTOR_MARGIN: 12, // セクター描画時の外周マージン
-        GAP_PX: 1.5, // スリット幅
+        GAP_PX: 1.8, // スリット幅
         INNER_RATIO: 0.6, // 内円の比率
     },
 };
@@ -445,20 +445,54 @@ const clearContainer = (container) => {
         container.removeChild(container.lastChild);
     }
 };
+/**
+ * コントラスト計のHTML構造を生成・更新する
+ */
+const renderContrastMeter = (containerId, ratio) => {
+    const container = document.getElementById(containerId);
+    if (!container) return;
 
+    // スケール計算（最大8.0で100%）
+    const calcPos = (val) => Math.min(Math.max(((val - 1) / 7) * 100, 0), 100);
+    const currentPercent = calcPos(ratio);
+
+    // メモリの位置（固定）
+    const posNormalAA = calcPos(4.5); // 50%
+    const posNormalAAA = calcPos(7.0); // 85.7%
+    const posLargeAA = calcPos(3.0); // 28.6%
+    const posLargeAAA = calcPos(4.5); // 50%
+
+    container.innerHTML = `
+        <div class="contrast-meter">
+            <div class="marker marker-top bg-aa" style="left: ${posNormalAA}%;">AA</div>
+            <div class="marker marker-top bg-aaa" style="left: ${posNormalAAA}%;">AAA</div>
+
+            <div class="meter-bar-base">
+                <div class="meter-bar-fill" style="width: ${currentPercent}%;"></div>
+            </div>
+
+            <div class="marker marker-bottom bg-aa" style="left: ${posLargeAA}%;">AA</div>
+            <div class="marker marker-bottom bg-aaa" style="left: ${posLargeAAA}%;">AAA</div>
+
+            <div class="ratio-display">${ratio.toFixed(2)}</div>
+        </div>
+    `;
+};
 /**
  * モーダルの内容を更新する
  * @param {object} colorObj 色オブジェクト
  */
 const updateModalContent = (colorObj) => {
     // コントラスト確認用
-    document.getElementById("contrast-text-black").style.backgroundColor = colorObj.hex;
-    document.getElementById("contrast-text-white").style.backgroundColor = colorObj.hex;
-    document.getElementById("contrast-bg-black").style.color = colorObj.hex;
-    document.getElementById("contrast-bg-white").style.color = colorObj.hex;
+    document.getElementById("detailModal").style.setProperty("--modal-active-color", colorObj.hex);
 
-    document.getElementById("contrast-white").textContent = chroma.contrast(colorObj.hex, "#ffffff").toFixed(2);
-    document.getElementById("contrast-black").textContent = chroma.contrast(colorObj.hex, "#000000").toFixed(2);
+    // コントラスト比
+    const ratioWhite = chroma.contrast(colorObj.hex, "#ffffff");
+    const ratioBlack = chroma.contrast(colorObj.hex, "#000000");
+
+    // 白背景に対して
+    renderContrastMeter("contrast-white", ratioWhite);
+    renderContrastMeter("contrast-black", ratioBlack);
 
     // テキスト情報
     document.getElementById("cellHex").textContent = colorObj.hex;
@@ -513,7 +547,7 @@ const renderDonutWheel = (colorList, activeHex = null) => {
         const pathData = calculateSectorPath(cx, cy, rOuter, rInner, startDeg, endDeg);
 
         // スリット用座標計算
-        const midDeg = startDeg + step / 2;
+        const midDeg = -90 + index * step;
         const midRad = (midDeg * Math.PI) / 180;
         const tx = Math.cos(midRad) * GAP_PX;
         const ty = Math.sin(midRad) * GAP_PX;
