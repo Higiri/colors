@@ -1,5 +1,6 @@
 :root {
     --modal-active-color: #ffffff;
+    --wheel-inner-size: 0px;
 }
 
 h1 {
@@ -34,12 +35,22 @@ h3 {
     height: 2.75rem;
 }
 */
+#wheel-center {
+    /* JSから渡される内接正方形のサイズを適用 */
+    width: var(--wheel-inner-size);
+    height: var(--wheel-inner-size);
+    pointer-events: none; /* 下の色相環のクリックを邪魔しない場合 */
+}
 .contrast-overview {
-    font-size: 1.5rem;
-    height: 2.75rem;
-    padding: 0.25rem 0;
-    font-family: consolas, "Myrica M", "Noto Sans Mono", monospace;
-    font-weight: bold;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--bs-border-radius);
+    transition:
+        background-color 0.2s ease-in-out,
+        color 0.2s ease-in-out;
 }
 .contrast-text-brack {
     color: #000;

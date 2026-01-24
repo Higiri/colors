@@ -1,6 +1,6 @@
 const CONFIG = {
     WHEEL: {
-        MAX_SIZE: 360,
+        MAX_SIZE: 300,
         MARGIN_OFFSET: 65, // 画面幅から引くサイズ
         SECTOR_MARGIN: 12, // セクター描画時の外周マージン
         GAP_PX: 1.8, // スリット幅
@@ -10,99 +10,93 @@ const CONFIG = {
 
 const PALETTE_LIST = [
     {
-        title: "CUD推奨配色セット(アクセントカラー)",
+        title: "カラーユニバーサルデザイン推奨配色セット",
         type: "other",
         colorList: [
             {
                 hex: "#ff4b00",
                 desc: "赤",
-                type: "",
+                type: "accent",
             },
             {
                 hex: "#f6aa00",
                 desc: "オレンジ",
-                type: "",
+                type: "accent",
             },
             {
                 hex: "#fff100",
                 desc: "黄色",
-                type: "",
+                type: "accent",
             },
             {
                 hex: "#03af7a",
                 desc: "緑",
-                type: "",
+                type: "accent",
             },
             {
                 hex: "#005aff",
                 desc: "青",
-                type: "",
+                type: "accent",
             },
             {
                 hex: "#4dc4ff",
                 desc: "空色",
-                type: "",
+                type: "accent",
             },
             {
                 hex: "#990099",
                 desc: "紫",
-                type: "",
+                type: "accent",
             },
             {
                 hex: "#804000",
                 desc: "ピンク",
-                type: "",
+                type: "accent",
             },
-            {
-                hex: "#84919e",
-                desc: "灰色",
-                type: "",
-            },
-        ],
-    },
-    {
-        title: "CUD推奨配色セット(ベースカラー)",
-        type: "other",
-        colorList: [
             {
                 hex: "#ffcabf",
                 desc: "明るいピンク",
-                type: "",
+                type: "base",
             },
             {
                 hex: "#ffca80",
                 desc: "ベージュ",
-                type: "",
+                type: "base",
             },
             {
                 hex: "#ffff80",
                 desc: "クリーム",
-                type: "",
+                type: "base",
             },
             {
                 hex: "#d8f255",
                 desc: "明るい黄緑",
-                type: "",
+                type: "base",
             },
             {
                 hex: "#77d9a8",
                 desc: "明るい緑",
-                type: "",
+                type: "base",
             },
             {
                 hex: "#bfe4ff",
                 desc: "明るい空色",
-                type: "",
+                type: "base",
             },
             {
                 hex: "#c9ace6",
                 desc: "明るい紫",
-                type: "",
+                type: "base",
+            },
+            {
+                hex: "#84919e",
+                desc: "灰色",
+                type: "achromatic",
             },
             {
                 hex: "#c8c8cb",
                 desc: "明るいグレー",
-                type: "",
+                type: "achromatic",
             },
         ],
     },
@@ -528,6 +522,10 @@ const renderDonutWheel = (colorList, activeHex = null) => {
     const size = calculateWheelSize();
     container.style.width = `${size}px`;
     container.style.height = `${size}px`;
+
+    const innerDiameter = (size - CONFIG.WHEEL.SECTOR_MARGIN * 2) * CONFIG.WHEEL.INNER_RATIO - CONFIG.WHEEL.SECTOR_MARGIN;
+    const squareSide = Math.round(innerDiameter / Math.SQRT2);
+    document.getElementById("detailModal").style.setProperty("--wheel-inner-size", `${squareSide}px`);
 
     const { SECTOR_MARGIN, GAP_PX, INNER_RATIO } = CONFIG.WHEEL;
 
