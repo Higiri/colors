@@ -10,123 +10,136 @@ const CONFIG = {
 
 /**
  * 色パレットのリスト
- *
+ * biome-ignore format: json
  */
 const PALETTE_LIST = [
 	{
 		title: "カラーユニバーサルデザイン推奨配色セット",
 		type: "other",
 		colorList: [
-			// biome-ignore format:
-			{ hex: "#ff4b00", desc: "赤",           type: "accent" },
-			{ hex: "#f6aa00", desc: "オレンジ",     type: "accent" },
-			{ hex: "#fff100", desc: "黄色",         type: "accent" },
-			{ hex: "#03af7a", desc: "緑",           type: "accent" },
-			{ hex: "#005aff", desc: "青",           type: "accent" },
-			{ hex: "#4dc4ff", desc: "空色",         type: "accent" },
-			{ hex: "#990099", desc: "紫",           type: "accent" },
-			{ hex: "#804000", desc: "ピンク",       type: "accent" },
-			{ hex: "#ffcabf", desc: "明るいピンク", type: "base" },
-			{ hex: "#ffca80", desc: "ベージュ",     type: "base" },
-			{ hex: "#ffff80", desc: "クリーム",     type: "base" },
-			{ hex: "#d8f255", desc: "明るい黄緑",   type: "base" },
-			{ hex: "#77d9a8", desc: "明るい緑",     type: "base" },
-			{ hex: "#bfe4ff", desc: "明るい空色",   type: "base" },
-			{ hex: "#c9ace6", desc: "明るい紫",     type: "base" },
-			{ hex: "#84919e", desc: "灰色",         type: "achromatic" },
-			{ hex: "#c8c8cb", desc: "明るいグレー", type: "achromatic" },
+			{ hex: "#ff4b00", type: "accent"    , desc: "赤"           },
+			{ hex: "#f6aa00", type: "accent"    , desc: "オレンジ"     },
+			{ hex: "#fff100", type: "accent"    , desc: "黄色"         },
+			{ hex: "#03af7a", type: "accent"    , desc: "緑"           },
+			{ hex: "#005aff", type: "accent"    , desc: "青"           },
+			{ hex: "#4dc4ff", type: "accent"    , desc: "空色"         },
+			{ hex: "#990099", type: "accent"    , desc: "紫"           },
+			{ hex: "#804000", type: "accent"    , desc: "ピンク"       },
+			{ hex: "#ffcabf", type: "base"      , desc: "明るいピンク" },
+			{ hex: "#ffca80", type: "base"      , desc: "ベージュ"     },
+			{ hex: "#ffff80", type: "base"      , desc: "クリーム"     },
+			{ hex: "#d8f255", type: "base"      , desc: "明るい黄緑"   },
+			{ hex: "#77d9a8", type: "base"      , desc: "明るい緑"     },
+			{ hex: "#bfe4ff", type: "base"      , desc: "明るい空色"   },
+			{ hex: "#c9ace6", type: "base"      , desc: "明るい紫"     },
+			{ hex: "#84919e", type: "achromatic", desc: "灰色"         },
+			{ hex: "#c8c8cb", type: "achromatic", desc: "明るいグレー" },
 		],
 	},
 	{
 		title: "ぼっち・ざ・ろっく！",
 		type: "anime",
 		colorList: [
-			{ hex: "#ff2291", desc: "後藤ひとり", type: "character" },
-			{ hex: "#ffb400", desc: "伊地知虹夏", type: "character" },
-			{ hex: "#02d1e0", desc: "山田リョウ", type: "character" },
-			{ hex: "#ff4637", desc: "喜多郁代", type: "character" },
+			{ hex: "#ff2291", type: "character", desc: "後藤ひとり アニメ公式サイト キャラクター情報の配色" },
+			{ hex: "#ffb400", type: "character", desc: "伊地知虹夏 アニメ公式サイト キャラクター情報の配色" },
+			{ hex: "#02d1e0", type: "character", desc: "山田リョウ アニメ公式サイト キャラクター情報の配色" },
+			{ hex: "#ff4637", type: "character", desc: "喜多郁代 アニメ公式サイト キャラクター情報の配色"   },
 		],
 	},
 	{
 		title: "リコリス・リコイル",
 		type: "anime",
 		colorList: [
-			{ hex: "#ef545b", desc: "錦木千束", type: "character" },
-			{ hex: "#00b4ac", desc: "井ノ上たきな", type: "character" },
+			{ hex: "#f0555a", type: "character", desc: "錦木千束 アニメ公式サイト キャラクター情報の配色" },
+			{ hex: "#2a96fa", type: "character", desc: "井ノ上たきな アニメ公式サイト キャラクター情報の配色" },
+			{ hex: "#00b4aa", type: "character", desc: "中原ミズキ アニメ公式サイト キャラクター情報の配色" },
+			{ hex: "#ffe76c", type: "character", desc: "クルミ アニメ公式サイト キャラクター情報の配色" },
+			{ hex: "#7a5668", type: "character", desc: "ミカ アニメ公式サイト キャラクター情報の配色" },
+			{ hex: "#475073", type: "character", desc: "その他 アニメ公式サイト キャラクター情報の配色" }
+		],
+	},
+	{
+		title: "リコリス・リコイル ロゴ",
+		type: "anime",
+		colorList: [
+			{ hex: "#ef545b", type: "logo", desc: "ロゴ配色1" },
+			{ hex: "#00b4ac", type: "logo", desc: "ロゴ配色2" },
+			{ hex: "#e60064", type: "logo", desc: "ロゴ配色3" },
+			{ hex: "#5a2828", type: "logo", desc: "ロゴ配色4" },
 		],
 	},
 	{
 		title: "転生王女と天才令嬢の魔法革命",
 		type: "anime",
 		colorList: [
-			{ hex: "#ed9daa", desc: "", type: "character" },
-			{ hex: "#90a7d3", desc: "", type: "character" },
+			{ hex: "#ed9daa", type: "character", desc: "" },
+			{ hex: "#90a7d3", type: "character", desc: "" },
 		],
 	},
 	{
 		title: "Summer Pockets",
 		type: "game",
 		colorList: [
-			{ hex: "#ab94d0", desc: "鳴瀬しろは", type: "character" },
-			{ hex: "#ff769a", desc: "", type: "character" },
-			{ hex: "#f9b933", desc: "", type: "character" },
-			{ hex: "#72cf58", desc: "", type: "character" },
-			{ hex: "#23ac38", desc: "", type: "character" },
-			{ hex: "#601986", desc: "", type: "character" },
-			{ hex: "#c62885", desc: "", type: "character" },
-			{ hex: "#e5041e", desc: "", type: "character" },
+			{ hex: "#ab94d0", type: "character", desc: "鳴瀬しろは 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
+			{ hex: "#ff769a", type: "character", desc: "" },
+			{ hex: "#f9b933", type: "character", desc: "" },
+			{ hex: "#72cf58", type: "character", desc: "" },
+			{ hex: "#23ac38", type: "character", desc: "" },
+			{ hex: "#601986", type: "character", desc: "" },
+			{ hex: "#c62885", type: "character", desc: "" },
+			{ hex: "#e5041e", type: "character", desc: "" },
 		],
 	},
 	{
 		title: "LOOPERS",
 		type: "game",
 		colorList: [
-			{ hex: "#e80094", desc: "", type: "background" },
-			{ hex: "#cafb57", desc: "", type: "background" },
-			{ hex: "#689500", desc: "", type: "background" },
-			{ hex: "#ff361d", desc: "", type: "background" },
+			{ hex: "#e80094", type: "background", desc: "" },
+			{ hex: "#cafb57", type: "background", desc: "" },
+			{ hex: "#689500", type: "background", desc: "" },
+			{ hex: "#ff361d", type: "background", desc: "" },
 		],
 	},
 	{
 		title: "LUNARiA -Virtualized Moonchild-",
 		type: "game",
 		colorList: [
-			{ hex: "#3955c9", desc: "", type: "background" },
-			{ hex: "#fff954", desc: "", type: "background" },
-			{ hex: "#5adae8", desc: "", type: "background" },
+			{ hex: "#3955c9", type: "background", desc: "" },
+			{ hex: "#fff954", type: "background", desc: "" },
+			{ hex: "#5adae8", type: "background", desc: "" },
 		],
 	},
 	{
 		title: "蒼の彼方のフォーリズム",
 		type: "game",
 		colorList: [
-			{ hex: "#fe3668", desc: "", type: "character" },
-			{ hex: "#c136fe", desc: "", type: "character" },
-			{ hex: "#febc12", desc: "", type: "character" },
-			{ hex: "#27cc90", desc: "", type: "character" },
-			{ hex: "#0072f4", desc: "", type: "background" },
+			{ hex: "#fe3668", type: "character", desc: "" },
+			{ hex: "#c136fe", type: "character", desc: "" },
+			{ hex: "#febc12", type: "character", desc: "" },
+			{ hex: "#27cc90", type: "character", desc: "" },
+			{ hex: "#0072f4", type: "background", desc: "" },
 		],
 	},
 	{
 		title: "さくらの雲*スカアレットの恋",
 		type: "game",
 		colorList: [
-			{ hex: "#f25242", desc: "", type: "character" },
-			{ hex: "#e6bf68", desc: "", type: "character" },
-			{ hex: "#72b0cb", desc: "", type: "character" },
-			{ hex: "#9c92c9", desc: "", type: "character" },
-			{ hex: "#ff9a91", desc: "", type: "character" },
+			{ hex: "#f25242", type: "character", desc: "" },
+			{ hex: "#e6bf68", type: "character", desc: "" },
+			{ hex: "#72b0cb", type: "character", desc: "" },
+			{ hex: "#9c92c9", type: "character", desc: "" },
+			{ hex: "#ff9a91", type: "character", desc: "" },
 		],
 	},
 	{
 		title: "ハミダシクリエイティブ",
 		type: "game",
 		colorList: [
-			{ hex: "#f57da6", desc: "", type: "character" },
-			{ hex: "#fdc164", desc: "", type: "character" },
-			{ hex: "#9b7aee", desc: "", type: "character" },
-			{ hex: "#4bbaf2", desc: "", type: "character" },
-			{ hex: "#e03331", desc: "", type: "background" },
+			{ hex: "#f57da6", type: "character", desc: "" },
+			{ hex: "#fdc164", type: "character", desc: "" },
+			{ hex: "#9b7aee", type: "character", desc: "" },
+			{ hex: "#4bbaf2", type: "character", desc: "" },
+			{ hex: "#e03331", type: "background", desc: "" },
 		],
 	},
 ];
@@ -136,24 +149,22 @@ const PALETTE_LIST = [
  * @param {string} bgHex 背景色(hex)
  * @returns
  */
-const selectColorByContrastFor = (bgHex) => {
-	const bg = chroma(bgHex);
+// const selectColorByContrastFor = (bgHex) => {
+// 	// 白と黒のコントラストを比較
+// 	const contrastWhite = chroma.contrast(bgHex, "white");
+// 	const contrastBlack = chroma.contrast(bgHex, "black");
 
-	// 白と黒のコントラストを比較
-	const contrastWhite = chroma.contrast(bgHex, "white");
-	const contrastBlack = chroma.contrast(bgHex, "black");
-
-	return contrastWhite < contrastBlack ? "black" : "white";
-};
+// 	return contrastWhite < contrastBlack ? "black" : "white";
+// };
 
 /**
  * PALETTE_LISTの各カラーオブジェクトに計算済みのフォーマット(rgb, hsv, hsl)を追加する
  */
 const preprocessPaletteData = () => {
 	const formatArray = (arr) => arr.map(
-		(v, i) => (i === 0 ? Math.round(v) || 0 : Math.round(v * 100) + "%")
+		(v, i) => (i === 0 ? Math.round(v) || 0 : `${Math.round(v * 100)}%`)
 	).join(" ");
-	const formatCmyk = (arr) => arr.map((v) => Math.round(v * 100) + "%").join(" ");
+	const formatCmyk = (arr) => arr.map((v) => `${Math.round(v * 100)}%`).join(" ");
 
 	PALETTE_LIST.forEach((work) => {
 		work.colorList.forEach((color) => {
@@ -232,32 +243,50 @@ const clearContainer = (container) => {
 const renderContrastMeter = (containerId, ratio) => {
 	const container = document.getElementById(containerId);
 	if (!container) return;
+	clearContainer(container);
 
 	// スケール計算（最大8.0で100%）
 	const calcPos = (val) => Math.min(Math.max(((val - 1) / 7) * 100, 0), 100);
 	const currentPercent = calcPos(ratio);
 
-	// メモリの位置（固定）
-	const posNormalAA = calcPos(4.5); // 50%
-	const posNormalAAA = calcPos(7.0); // 85.7%
-	const posLargeAA = calcPos(3.0); // 28.6%
-	const posLargeAAA = calcPos(4.5); // 50%
+	const meterWrapper = document.createElement('div');
+    meterWrapper.className = 'contrast-meter';
 
-	container.innerHTML = `
-        <div class="contrast-meter">
-            <div class="marker marker-top bg-aa" style="left: ${posNormalAA}%;">AA</div>
-            <div class="marker marker-top bg-aaa" style="left: ${posNormalAAA}%;">AAA</div>
+    // 2. マーカー生成ヘルパー関数
+    const createMarker = (type, level, posValue) => {
+        const marker = document.createElement('div');
+        marker.className = `marker marker-${type} ${level === 'AAA' ? 'bg-aaa' : 'bg-aa'}`;
+        marker.style.left = `${calcPos(posValue)}%`;
+        marker.textContent = level;
+        return marker;
+    };
 
-            <div class="meter-bar-base">
-                <div class="meter-bar-fill" style="width: ${currentPercent}%;"></div>
-            </div>
+    // 3. 各パーツを生成して追加
+    // 上側：普通テキスト基準 (Normal)
+    meterWrapper.appendChild(createMarker('top', 'AA', 4.5));
+    meterWrapper.appendChild(createMarker('top', 'AAA', 7.0));
 
-            <div class="marker marker-bottom bg-aa" style="left: ${posLargeAA}%;">AA</div>
-            <div class="marker marker-bottom bg-aaa" style="left: ${posLargeAAA}%;">AAA</div>
+    // 中央：バー本体
+    const barBase = document.createElement('div');
+    barBase.className = 'meter-bar-base';
+    const barFill = document.createElement('div');
+    barFill.className = 'meter-bar-fill';
+    barFill.style.width = `${currentPercent}%`;
+    barBase.appendChild(barFill);
+    meterWrapper.appendChild(barBase);
 
-            <div class="ratio-display">${ratio.toFixed(2)}</div>
-        </div>
-    `;
+    // 下側：大きいテキスト基準 (Large)
+    meterWrapper.appendChild(createMarker('bottom', 'AA', 3.0));
+    meterWrapper.appendChild(createMarker('bottom', 'AAA', 4.5));
+
+    // 4. 比率テキスト
+    const ratioDisplay = document.createElement('div');
+    ratioDisplay.className = 'ratio-display';
+    ratioDisplay.textContent = `${ratio.toFixed(2)}`;
+    meterWrapper.appendChild(ratioDisplay);
+
+    // 最後にコンテナへ追加
+    container.appendChild(meterWrapper);
 };
 
 /**
