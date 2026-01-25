@@ -76,9 +76,12 @@ h3 {
     padding-top: 0.5rem;
     padding-bottom: 3.5rem;
 }
+/*
 p {
     text-indent: 1em;
 }
+*/
+
 /* 色相環のコンテナ */
 #wheel-container {
     position: relative;
