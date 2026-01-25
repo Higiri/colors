@@ -472,6 +472,24 @@ const renderContrastMeter = (containerId, ratio) => {
         </div>
     `;
 };
+
+/**
+ * WCAG2.0による評価基準を返す
+ * @param {number} contrastRatio コントラスト比
+ * @returns {string} 評価
+ */
+const contrastToWcag2 = (contrastRatio) => {
+    if (contrastRatio >= 7.0) {
+        return "AAA";
+    } else if (contrastRatio >= 4.5) {
+        return "AA";
+    } else if (contrastRatio >= 3.0) {
+        return "A*";
+    } else {
+        return "A";
+    }
+};
+
 /**
  * モーダルの内容を更新する
  * @param {object} colorObj 色オブジェクト
@@ -483,6 +501,11 @@ const updateModalContent = (colorObj) => {
     // コントラスト比
     const ratioWhite = chroma.contrast(colorObj.hex, "#ffffff");
     const ratioBlack = chroma.contrast(colorObj.hex, "#000000");
+
+    document.getElementById("contrast-text-white").textContent = contrastToWcag2(ratioWhite);
+    document.getElementById("contrast-bg-white").textContent = contrastToWcag2(ratioWhite);
+    document.getElementById("contrast-text-black").textContent = contrastToWcag2(ratioBlack);
+    document.getElementById("contrast-bg-black").textContent = contrastToWcag2(ratioBlack);
 
     // 白背景に対して
     renderContrastMeter("contrast-white", ratioWhite);
