@@ -77,17 +77,25 @@ const PALETTE_LIST = [
 		],
 	},
 	{
+		title: "ささやくように恋を唄う",
+		type: "anime",
+		colorList: [
+			{ hex: "#f37fa2", type: "character", desc: "" },
+			{ hex: "#00b6e5", type: "character", desc: "" },
+		],
+	},
+	{
 		title: "Summer Pockets",
 		type: "game",
 		colorList: [
 			{ hex: "#ab94d0", type: "character", desc: "鳴瀬しろは 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
-			{ hex: "#ff769a", type: "character", desc: "" },
-			{ hex: "#f9b933", type: "character", desc: "" },
-			{ hex: "#72cf58", type: "character", desc: "" },
-			{ hex: "#23ac38", type: "character", desc: "" },
-			{ hex: "#601986", type: "character", desc: "" },
-			{ hex: "#c62885", type: "character", desc: "" },
-			{ hex: "#e5041e", type: "character", desc: "" },
+			{ hex: "#ff769a", type: "character", desc: " 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
+			{ hex: "#f9b933", type: "character", desc: " 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
+			{ hex: "#72cf58", type: "character", desc: " 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
+			{ hex: "#23ac38", type: "character", desc: " 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
+			{ hex: "#601986", type: "character", desc: " 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
+			{ hex: "#c62885", type: "character", desc: " 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
+			{ hex: "#e5041e", type: "character", desc: " 「Summer Pockets REFLECTION BLUE」キャラクター情報の配色" },
 		],
 	},
 	{
@@ -110,6 +118,30 @@ const PALETTE_LIST = [
 		],
 	},
 	{
+		title: "ISLAND",
+		type: "game",
+		colorList: [
+			{ hex: "#a5acf3", type: "background", desc: "背景色1" },
+			{ hex: "#ffcd56", type: "background", desc: "背景色2" },
+			{ hex: "#f286ad", type: "background", desc: "背景色3" },
+			{ hex: "#bcbcbc", type: "background", desc: "背景色4" },
+			{ hex: "#86cdf2", type: "background", desc: "背景色5" },
+			{ hex: "#cce791", type: "background", desc: "背景色6" },
+			{ hex: "#6973d4", type: "background", desc: "背景色7" },
+		],
+	},
+	{
+		title: "Re:LieF～親愛なるあなたへ～",
+		type: "game",
+		colorList: [
+			{ hex: "#f9779e", type: "background", desc: "背景色1" },
+			{ hex: "#9a84bc", type: "background", desc: "背景色2" },
+			{ hex: "#fdd001", type: "background", desc: "背景色3" },
+			{ hex: "#9f9fa0", type: "background", desc: "背景色4" },
+			{ hex: "#b6da3d", type: "background", desc: "背景色5" },
+		],
+	},
+	{
 		title: "蒼の彼方のフォーリズム",
 		type: "game",
 		colorList: [
@@ -118,6 +150,26 @@ const PALETTE_LIST = [
 			{ hex: "#febc12", type: "character", desc: "" },
 			{ hex: "#27cc90", type: "character", desc: "" },
 			{ hex: "#0072f4", type: "background", desc: "" },
+		],
+	},
+	{
+		title: "蒼の彼方のフォーリズム(OP2)",
+		type: "game",
+		colorList: [
+			{ hex: "#f01d76", type: "character", desc: "" },
+			{ hex: "#774da1", type: "character", desc: "" },
+			{ hex: "#e5b200", type: "character", desc: "" },
+			{ hex: "#00c6c4", type: "character", desc: "" },
+			{ hex: "#8f5b92", type: "character", desc: "" },
+			{ hex: "#74a12e", type: "character", desc: "" },
+			{ hex: "#c43dbe", type: "character", desc: "" },
+			{ hex: "#e5ac15", type: "character", desc: "" },
+			{ hex: "#fead00", type: "character", desc: "" },
+			{ hex: "#00d4a6", type: "character", desc: "" },
+			{ hex: "#3ea960", type: "character", desc: "" },
+			{ hex: "#3347af", type: "character", desc: "" },
+			{ hex: "#db3d4c", type: "character", desc: "" },
+			{ hex: "#007efc", type: "character", desc: "" },
 		],
 	},
 	{
@@ -140,6 +192,67 @@ const PALETTE_LIST = [
 			{ hex: "#9b7aee", type: "character", desc: "" },
 			{ hex: "#4bbaf2", type: "character", desc: "" },
 			{ hex: "#e03331", type: "background", desc: "" },
+		],
+	},
+	{
+		title: "ハミダシクリエイティブ凸",
+		type: "game",
+		colorList: [
+			{ hex: "#e6316d", type: "character", desc: "" },
+			{ hex: "#f9bf1d", type: "character", desc: "" },
+			{ hex: "#01a4e1", type: "character", desc: "" },
+			{ hex: "#e6813b", type: "character", desc: "" },
+			{ hex: "#4d448d", type: "character", desc: "" },
+		],
+	},
+	{
+		title: "スタディ§ステディ",
+		type: "game",
+		colorList: [
+			{ hex: "#16b8ce", type: "character", desc: "" },
+			{ hex: "#826ecd", type: "character", desc: "" },
+			{ hex: "#eb679c", type: "character", desc: "" },
+			{ hex: "#ef865a", type: "character", desc: "" },
+		],
+	},
+	{
+		title: "ぬきたし(OP1)",
+		type: "game",
+		colorList: [
+			{ hex: "#ffbf00", type: "character", desc: "渡会ヒナミ" },
+			{ hex: "#ff8000", type: "character", desc: "片桐奈々瀬" },
+			{ hex: "#05b5fa", type: "character", desc: "畔美岬" },
+			{ hex: "#ff3344", type: "character", desc: "橘麻沙音" },
+			{ hex: "#00d97e", type: "character", desc: "冷泉院桐香" },
+			{ hex: "#405fff", type: "character", desc: "糺川礼" },
+			{ hex: "#ff45a9", type: "character", desc: "女部田郁子" },
+			{ hex: "#8845e6", type: "character", desc: "仙波光姫" },
+			{ hex: "#ffd900", type: "character", desc: "花丸蘭" },
+			{ hex: "#0082f2", type: "character", desc: "ハメドリくん" },
+		],
+	},
+	{
+		title: "ぬきたし(OP2)",
+		type: "game",
+		colorList: [
+			{ hex: "#f20000", type: "movie", desc: "背景色1" },
+			{ hex: "#0e0000", type: "movie", desc: "背景色2" },
+		],
+	},
+	{
+		title: "ぬきたし2",
+		type: "game",
+		colorList: [
+			{ hex: "#f20000", type: "movie", desc: "SS BIG4" },
+			{ hex: "#0082f2", type: "movie", desc: "NLNS" },
+		],
+	},
+	{
+		title: "ヘンプリ",
+		type: "game",
+		colorList: [
+			{ hex: "#ffff00", type: "movie", desc: "背景色1" },
+			{ hex: "#000000", type: "movie", desc: "背景色2" },
 		],
 	},
 ];
