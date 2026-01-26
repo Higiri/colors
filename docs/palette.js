@@ -121,19 +121,6 @@ const PALETTE_LIST = [
 		],
 	},
 	{
-		title: "ISLAND",
-		type: "game",
-		colorList: [
-			{ hex: "#a5acf3", type: "background", desc: "背景色1" },
-			{ hex: "#ffcd56", type: "background", desc: "背景色2" },
-			{ hex: "#f286ad", type: "background", desc: "背景色3" },
-			{ hex: "#bcbcbc", type: "background", desc: "背景色4" },
-			{ hex: "#86cdf2", type: "background", desc: "背景色5" },
-			{ hex: "#cce791", type: "background", desc: "背景色6" },
-			{ hex: "#6973d4", type: "background", desc: "背景色7" },
-		],
-	},
-	{
 		title: "月の彼方で逢いましょう",
 		type: "game",
 		colorList: [
@@ -145,6 +132,38 @@ const PALETTE_LIST = [
 			{ hex: "#b40050", type: "charactor", desc: "松宮霧子 「月の彼方で逢いましょう」キャラクター情報の配色" },
 			{ hex: "#0fb9b6", type: "charactor", desc: "月ヶ洞きらり 「月の彼方で逢いましょう」キャラクター情報の配色" },
 			{ hex: "#828282", type: "charactor", desc: "黒野奏汰 「月の彼方で逢いましょう」キャラクター情報の配色" },
+		],
+	},
+	{
+		title: "銀色、遙か",
+		type: "game",
+		colorList: [
+			{ hex: "#e87492", type: "charactor", desc: "ベスリー・ローズ・ディズリー 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#00b9ef", type: "charactor", desc: "蒼井雛多 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#f39800", type: "charactor", desc: "名白椛 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#a691b7", type: "charactor", desc: "如月瑞羽 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#b7d32a", type: "charactor", desc: "新見雪月 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#64c0ab", type: "charactor", desc: "新見雪兔 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#8290c7", type: "charactor", desc: "西園百々花 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#c89739", type: "charactor", desc: "桧崎まりあ 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#50669a", type: "charactor", desc: "阿久津怜士 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#e04072", type: "charactor", desc: "榊朱音 「銀色、遙か」キャラクター情報の配色" },
+			{ hex: "#f4afb4", type: "charactor", desc: "アリサ・アシェンスキー 「銀色、遙か」キャラクター情報の配色" },
+		],
+	},
+	{
+		title: "花咲ワークスプリング!",
+		type: "game",
+		colorList: [
+			{ hex: "#e71818", type: "charactor", desc: "不知火祈 「花咲ワークスプリング!」キャラクター情報の配色" },
+			{ hex: "#6996f1", type: "charactor", desc: "玖音彩乃 「花咲ワークスプリング!」キャラクター情報の配色" },
+			{ hex: "#ffb20b", type: "charactor", desc: "琴吹ヒカリ 「花咲ワークスプリング!」キャラクター情報の配色" },
+			{ hex: "#dfe200", type: "charactor", desc: "空森若葉 「花咲ワークスプリング!」キャラクター情報の配色" },
+			{ hex: "#c699ec", type: "charactor", desc: "上月柑南 「花咲ワークスプリング!」キャラクター情報の配色" },
+			{ hex: "#ff87af", type: "charactor", desc: "花咲ののか 「花咲ワークスプリング!」キャラクター情報の配色" },
+			{ hex: "#76bfb2", type: "charactor", desc: "山下久美 「花咲ワークスプリング!」キャラクター情報の配色" },
+			{ hex: "#c6644a", type: "charactor", desc: "芥川翔太 「花咲ワークスプリング!」キャラクター情報の配色" },
+			{ hex: "#b8c34f", type: "charactor", desc: "権田橋X晋作 「花咲ワークスプリング!」キャラクター情報の配色" },
 		],
 	},
 	{
@@ -220,6 +239,19 @@ const PALETTE_LIST = [
 			{ hex: "#01a4e1", type: "character", desc: "" },
 			{ hex: "#e6813b", type: "character", desc: "" },
 			{ hex: "#4d448d", type: "character", desc: "" },
+		],
+	},
+	{
+		title: "ISLAND",
+		type: "game",
+		colorList: [
+			{ hex: "#a5acf3", type: "background", desc: "背景色1" },
+			{ hex: "#ffcd56", type: "background", desc: "背景色2" },
+			{ hex: "#f286ad", type: "background", desc: "背景色3" },
+			{ hex: "#bcbcbc", type: "background", desc: "背景色4" },
+			{ hex: "#86cdf2", type: "background", desc: "背景色5" },
+			{ hex: "#cce791", type: "background", desc: "背景色6" },
+			{ hex: "#6973d4", type: "background", desc: "背景色7" },
 		],
 	},
 	{
