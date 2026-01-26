@@ -134,6 +134,20 @@ const PALETTE_LIST = [
 		],
 	},
 	{
+		title: "月の彼方で逢いましょう",
+		type: "game",
+		colorList: [
+			{ hex: "#fa3200", type: "charactor", desc: "新谷灯華 「月の彼方で逢いましょう」キャラクター情報の配色" },
+			{ hex: "#96aa1e", type: "charactor", desc: "日紫喜うぐいす 「月の彼方で逢いましょう」キャラクター情報の配色" },
+			{ hex: "#00b4ff", type: "charactor", desc: "佐倉雨音 「月の彼方で逢いましょう」キャラクター情報の配色" },
+			{ hex: "#ff3c9b", type: "charactor", desc: "倉橋聖衣良 「月の彼方で逢いましょう」キャラクター情報の配色" },
+			{ hex: "#7869f0", type: "charactor", desc: "岬栞菜 「月の彼方で逢いましょう」キャラクター情報の配色" },
+			{ hex: "#b40050", type: "charactor", desc: "松宮霧子 「月の彼方で逢いましょう」キャラクター情報の配色" },
+			{ hex: "#0fb9b6", type: "charactor", desc: "月ヶ洞きらり 「月の彼方で逢いましょう」キャラクター情報の配色" },
+			{ hex: "#828282", type: "charactor", desc: "黒野奏汰 「月の彼方で逢いましょう」キャラクター情報の配色" },
+		],
+	},
+	{
 		title: "Re:LieF～親愛なるあなたへ～",
 		type: "game",
 		colorList: [
