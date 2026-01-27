@@ -41,9 +41,9 @@
 					</div>
 					<div class="modal-body">
 						<div class="row">
-							<div class="col-12 col-lg-5">
-								<div class="d-flex justify-content-center mb-3 position-relative">
-									<div id="wheel-container"></div>
+							<div class="col-12 col-lg-5 mb-3">
+								<div class="d-flex justify-content-center mb-2 position-relative">
+									<div id="wheel-container" class="wheel-container"></div>
 									<div id="wheel-center" class="position-absolute top-50 start-50 translate-middle">
 										<div class="row g-1">
 											<div class="col-6">
@@ -69,22 +69,34 @@
 										</div>
 									</div>
 								</div>
+                                <div class="contrast-progress-area">
+                                    <div id="contrast-white" class="contrast-progress-wrapper">
+                                        <div class="badge text-bg-light">vs 白</div>
+                                        <div class="contrast-progress-container">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 0%"></div>
+                                            </div>
+                                            <div class="contrast-marker-circle size-a marker-inactive" data-threshold="3.0" style="left: 33.3%;"></div>
+                                            <div class="contrast-marker-circle size-aa marker-inactive" data-threshold="4.5" style="left: 50%;">AA</div>
+                                            <div class="contrast-marker-circle size-aaa marker-inactive" data-threshold="7.0" style="left: 77.7%;">AAA</div>
+                                        </div>
+                                        <div class="ratio-value-label">1.0</div>
+                                    </div>
+                                    <div id="contrast-black" class="contrast-progress-wrapper">
+                                        <div class="badge text-bg-dark">vs 黒</div>
+                                        <div class="contrast-progress-container">
+                                            <div class="progress">
+                                                <div class="progress-bar" style="width: 0%"></div>
+                                            </div>
+                                            <div class="contrast-marker-circle size-a marker-inactive" data-threshold="3.0" style="left: 33.3%;"></div>
+                                            <div class="contrast-marker-circle size-aa marker-inactive" data-threshold="4.5" style="left: 50%;">AA</div>
+                                            <div class="contrast-marker-circle size-aaa marker-inactive" data-threshold="7.0" style="left: 77.7%;">AAA</div>
+                                        </div>
+                                        <div class="ratio-value-label">1.0</div>
+                                    </div>
+                                </div>
 							</div>
 							<div class="col-12 col-lg">
-								<div class="row g-1 mb-2">
-									<div class="col-6">
-                                        <div>白とのコントラスト比</div>
-										<div class="d-flex justify-content-center">
-											<div id="contrast-white" class="w-100"></div>
-										</div>
-									</div>
-									<div class="col-6">
-                                        <div>黒とのコントラスト比</div>
-										<div class="d-flex justify-content-center">
-											<div id="contrast-black" class="w-100"></div>
-										</div>
-									</div>
-								</div>
 								<table id="detailModalTable" class="table table-sm mb-2">
 									<tbody>
 										<tr>
@@ -109,7 +121,7 @@
 										</tr>
 									</tbody>
 								</table>
-								<p id="modalDescription"></p>
+								<p id="modalDescription" class="modal-description"></p>
 							</div>
 						</div>
 					</div>

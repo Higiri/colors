@@ -1,33 +1,34 @@
 :root {
-    --modal-active-color: #ffffff;
-    --wheel-inner-size: 0px;
+	--modal-active-color: #ffffff;
+	--wheel-inner-size: 0px;
+	--wheel-size: 0px
 }
 
 h1 {
-    font-size: 24px;
+	font-size: 24px;
 }
 h2 {
-    font-size: 20px;
+	font-size: 20px;
 }
 h3 {
-    font-size: 1em;
-    font-weight: normal;
+	font-size: 1em;
+	font-weight: normal;
 }
 .colors-title {
-    font-size: 1em;
-    font-weight: normal;
-    margin: 4px 0;
+	font-size: 1em;
+	font-weight: normal;
+	margin: 4px 0;
 }
 .nav-pills .nav-link {
-    padding: 4px 8px;
-    margin: 4px 0;
+	padding: 4px 8px;
+	margin: 4px 0;
 }
 
 .color-overview {
-    /* font-size: 0.75rem; */
-    /* padding: 0.25rem 0; */
-    /* font-family: consolas, "Myrica M", "Noto Sans Mono", monospace; */
-    height: 1.25rem;
+	/* font-size: 0.75rem; */
+	/* padding: 0.25rem 0; */
+	/* font-family: consolas, "Myrica M", "Noto Sans Mono", monospace; */
+	height: 1.25rem;
 }
 /*
 .modal-color-overview {
@@ -36,45 +37,45 @@ h3 {
 }
 */
 #wheel-center {
-    /* JSから渡される内接正方形のサイズを適用 */
-    width: var(--wheel-inner-size);
-    height: var(--wheel-inner-size);
-    pointer-events: none; /* 下の色相環のクリックを邪魔しない場合 */
+	/* JSから渡される内接正方形のサイズを適用 */
+	width: var(--wheel-inner-size);
+	height: var(--wheel-inner-size);
+	pointer-events: none; /* 下の色相環のクリックを邪魔しない場合 */
 }
 .contrast-overview {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: var(--bs-border-radius);
-    transition:
-        background-color 0.2s ease-in-out,
-        color 0.2s ease-in-out;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--bs-border-radius);
+	transition:
+		background-color 0.2s ease-in-out,
+		color 0.2s ease-in-out;
 }
 .contrast-text-brack {
-    color: #000;
-    background-color: var(--modal-active-color);
+	color: #000;
+	background-color: var(--modal-active-color);
 }
 .contrast-text-white {
-    color: #fff;
-    background-color: var(--modal-active-color);
+	color: #fff;
+	background-color: var(--modal-active-color);
 }
 .contrast-bg-black {
-    color: var(--modal-active-color);
-    background-color: #000;
+	color: var(--modal-active-color);
+	background-color: #000;
 }
 .contrast-bg-white {
-    color: var(--modal-active-color);
-    background-color: #fff;
+	color: var(--modal-active-color);
+	background-color: #fff;
 }
 
 #detailModalTable th {
-    width: 4rem;
+	width: 4rem;
 }
 .main-contents {
-    padding-top: 0.5rem;
-    padding-bottom: 3.5rem;
+	padding-top: 0.5rem;
+	padding-bottom: 3.5rem;
 }
 /*
 p {
@@ -82,107 +83,160 @@ p {
 }
 */
 
+.modal-description {
+	min-height: 2rem;
+}
+
 /* 色相環のコンテナ */
-#wheel-container {
-    position: relative;
+.wheel-container {
+	position: relative;
+	width: var(--wheel-size);
+	height: var(--wheel-size);
+
 }
 
 .color-sector {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    z-index: 1;
-    transform-origin: center center;
-    transition: transform 0.2s ease-in-out;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	z-index: 1;
+	transform-origin: center center;
+	transition: transform 0.2s ease-in-out;
 
-    --translate-x: 0px;
-    --translate-y: 0px;
-    --scale: 1;
-    transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale));
+	--translate-x: 0px;
+	--translate-y: 0px;
+	--scale: 1;
+	transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale));
 }
 
 .color-sector:hover {
-    z-index: 10;
-    --scale: 1.02;
+	z-index: 10;
+	--scale: 1.02;
 }
 .color-sector.active {
-    z-index: 10;
-    --scale: 1.04;
+	z-index: 10;
+	--scale: 1.04;
 }
 
-/* 進捗バー全体のレイアウト */
-/* コントラスト計全体のコンテナ */
-.contrast-meter {
-    width: 100%;
-    height: 65px; /* 上下の吹き出しを収めるための高さを固定 */
-    margin: 10px 0;
-    position: relative;
-    display: flex;
-    align-items: center; /* バーを垂直中央に配置 */
+.contrast-progress-area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 0.25rem;
 }
 
-/* 共通のバー（背景） */
-.meter-bar-base {
-    width: 100%;
-    height: 10px;
-    background: #e9ecef;
-    border-radius: 5px;
-    position: relative;
-    z-index: 1;
+/* コントラスト計全体のレイアウト */
+.contrast-progress-wrapper {
+	max-width: var(--wheel-size);
+	display: flex;
+	align-items: center;
+	width: 100%;
+	gap: 0.25rem
 }
 
-/* 現在値を示すインジケーター */
-.meter-bar-fill {
-    height: 100%;
-    background: var(--modal-active-color, #666);
-    border-radius: 5px;
-    width: 0%;
-    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* 比率数値ラベル（左側） */
+.ratio-value-label {
+	width: 2.25rem;
+	font-size: 0.85rem;
+	align-items: center; /* テキスト自体の垂直中央 */
+	line-height: 1;
+	text-align: right;
 }
 
-/* 吹き出し（メモリ）の共通スタイル */
-.marker {
-    position: absolute;
-    padding: 2px 6px;
-    font-size: 10px;
-    font-weight: bold;
-    color: white;
-    white-space: nowrap;
-    transform: translateX(-50%);
-    z-index: 2;
+/* プログレスバーとマーカーの親コンテナ */
+.contrast-progress-container {
+	position: relative;
+	flex-grow: 1;
+	height: 1.5rem;
+	display: flex;
+	align-items: center;
 }
 
-/* 上側（普通テキスト用）：バーの中央(50%)から上に配置 */
-.marker-top {
-    bottom: calc(50% + 10px); /* バーの中央より10px上に配置 */
-    clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 60% 80%, 50% 100%, 40% 80%, 0% 80%);
-    padding-bottom: 7px;
+/* Bootstrap progress 本体のオーバーライド */
+.contrast-progress-container .progress {
+	width: 100%;
+	height: 0.5rem;
+	overflow: visible;
+	background-color: #e9ecef;
+	border-radius: 0 50rem 50rem 0;
 }
 
-/* 下側（大きいテキスト用）：バーの中央(50%)から下に配置 */
-.marker-bottom {
-    top: calc(50% + 10px); /* バーの中央より10px下に配置 */
-    clip-path: polygon(50% 0%, 60% 20%, 100% 20%, 100% 100%, 0% 100%, 0% 20%, 40% 20%);
-    padding-top: 7px;
+/* 進捗バー部分 */
+.contrast-progress-container .progress-bar {
+	background-color: var(--modal-active-color);
+	border-radius: 0 50rem 50rem 0;
+	transition: width 0.4s ease-in-out;
 }
 
-/* 基準値ごとの色 */
-.bg-aa {
-    background-color: #a3cf62;
-}
-.bg-aaa {
-    background-color: #28a745;
+/* マーカー共通：中心を基準に絶対配置 */
+/* 共通：マーカーの基本スタイル */
+.contrast-marker-circle {
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-weight: bold;
+	font-size: 0.65rem;
+	z-index: 2;
+	transition:
+		background-color 0.4s ease-in-out,
+		color 0.4s ease-in-out,
+		transform 0.4s ease-in-out;
 }
 
-/* 比率テキスト（バーの下に少し余裕を持って配置） */
-.ratio-display {
-    position: absolute;
-    right: 0;
-    top: calc(50% + 10px);
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #666;
+/* 未到達（灰色） */
+.marker-inactive {
+	background-color: #dee2e6; /* 薄い灰色 */
+	color: #adb5bd; /* 文字も少し薄く */
+}
+
+/* 達成時（活性色） */
+.marker-a {
+	background-color: #adb5bd; /* Aは標準的な灰色 */
+	color: #fff;
+}
+.marker-aa {
+	background-color: #a3cf62; /* AAは黄緑 */
+	color: #fff;
+}
+.marker-aaa {
+	background-color: #28a745; /* AAAは濃い緑 */
+	color: #fff;
+}
+
+/* 達成度別の色（マーカー背景） */
+.marker-a {
+	background-color: #6c757d;
+	width: 1rem;
+	height: 1rem;
+}
+.marker-aa {
+	background-color: #a3cf62;
+	width: 1.25rem;
+	height: 1.25rem;
+}
+.marker-aaa {
+	background-color: #28a745;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+.size-a {
+	width: 1rem;
+	height: 1rem;
+}
+.size-aa {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+.size-aaa {
+	width: 1.5rem;
+	height: 1.5rem;
 }

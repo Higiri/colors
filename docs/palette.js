@@ -404,51 +404,36 @@ const clearContainer = (container) => {
  */
 const renderContrastMeter = (containerId, ratio) => {
 	const container = document.getElementById(containerId);
-	if (!container) return;
-	clearContainer(container);
+    if (!container) return;
 
-	// スケール計算（最大8.0で100%）
-	const calcPos = (val) => Math.min(Math.max(((val - 1) / 7) * 100, 0), 100);
-	const currentPercent = calcPos(ratio);
+    const calcPos = (val) => Math.min(Math.max((val / 9) * 100, 0), 100);
 
-	const meterWrapper = document.createElement('div');
-    meterWrapper.className = 'contrast-meter';
+    // 1. 数値ラベルの更新
+    const ratioLabel = container.querySelector('.ratio-value-label');
+    if (ratioLabel) ratioLabel.textContent = ratio.toFixed(2);
 
-    // 2. マーカー生成ヘルパー関数
-    const createMarker = (type, level, posValue) => {
-        const marker = document.createElement('div');
-        marker.className = `marker marker-${type} ${level === 'AAA' ? 'bg-aaa' : 'bg-aa'}`;
-        marker.style.left = `${calcPos(posValue)}%`;
-        marker.textContent = level;
-        return marker;
-    };
+    // 2. プログレスバーの幅を更新 (ここでCSS transitionが発火する)
+    const progressBar = container.querySelector('.progress-bar');
+    if (progressBar) progressBar.style.width = `${calcPos(ratio)}%`;
 
-    // 3. 各パーツを生成して追加
-    // 上側：普通テキスト基準 (Normal)
-    meterWrapper.appendChild(createMarker('top', 'AA', 4.5));
-    meterWrapper.appendChild(createMarker('top', 'AAA', 7.0));
+    // 3. 各マーカーの状態を更新
+    const markers = container.querySelectorAll('.contrast-marker-circle');
+    markers.forEach(marker => {
+        const threshold = parseFloat(marker.dataset.threshold);
+        const isReached = ratio >= threshold;
 
-    // 中央：バー本体
-    const barBase = document.createElement('div');
-    barBase.className = 'meter-bar-base';
-    const barFill = document.createElement('div');
-    barFill.className = 'meter-bar-fill';
-    barFill.style.width = `${currentPercent}%`;
-    barBase.appendChild(barFill);
-    meterWrapper.appendChild(barBase);
-
-    // 下側：大きいテキスト基準 (Large)
-    meterWrapper.appendChild(createMarker('bottom', 'AA', 3.0));
-    meterWrapper.appendChild(createMarker('bottom', 'AAA', 4.5));
-
-    // 4. 比率テキスト
-    const ratioDisplay = document.createElement('div');
-    ratioDisplay.className = 'ratio-display';
-    ratioDisplay.textContent = `${ratio.toFixed(2)}`;
-    meterWrapper.appendChild(ratioDisplay);
-
-    // 最後にコンテナへ追加
-    container.appendChild(meterWrapper);
+        // クラスの付け替え
+        if (isReached) {
+            marker.classList.remove('marker-inactive');
+            // しきい値に応じた評価クラスを付与
+            if (threshold === 3.0) marker.classList.add('marker-a');
+            if (threshold === 4.5) marker.classList.add('marker-aa');
+            if (threshold === 7.0) marker.classList.add('marker-aaa');
+        } else {
+            marker.classList.add('marker-inactive');
+            marker.classList.remove('marker-a', 'marker-aa', 'marker-aaa');
+        }
+    });
 };
 
 /**
@@ -521,8 +506,7 @@ const renderDonutWheel = (colorList, activeHex = null) => {
 	clearContainer(container);
 
 	const size = calculateWheelSize();
-	container.style.width = `${size}px`;
-	container.style.height = `${size}px`;
+	document.getElementById("detailModal").style.setProperty("--wheel-size", `${size}px`);
 
 	const innerDiameter = (size - CONFIG.WHEEL.SECTOR_MARGIN * 2) * CONFIG.WHEEL.INNER_RATIO - CONFIG.WHEEL.SECTOR_MARGIN;
 	const squareSide = Math.round(innerDiameter / Math.SQRT2);
